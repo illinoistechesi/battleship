@@ -4,14 +4,18 @@ public abstract class Ship {
     
     public static final int LIMIT = 10;
     
+    // Ships information
     private String name;
     private String owner;
+    private Coord coord;
+    private int health;
+    
+    // Ships inital properties
     private int hull;
     private int firepower;
     private int speed;
     private int range;
-    private Coord coord;
-    private int health;
+    
     
     public Ship() {
         
@@ -52,14 +56,11 @@ public abstract class Ship {
     private Ship sunkBy;
     private Coord sunkAt;
     
-    public Ship getSunkBy() {
-        return this.sunkBy;
-    }
-    
-    public Coord getSunkAt() {
-        return this.sunkAt;
-    }
-    
+
+    /**
+     * This method will not be used directly outside of the API
+     * @param Ship Takes a ship object that sunk the current ship
+     */
     protected void recordSinking(Ship attacker) {
         this.sunkBy = attacker;
         this.sunkAt = this.getCoord();
@@ -112,6 +113,55 @@ public abstract class Ship {
         this.range = withdrawPoints(range);
     }
     
+
+    
+
+    
+    /**
+     * This method will not be used directly outside of the API
+     * @param int X component of a coordinate
+     * @param int Y component of a coordinate
+     */
+    protected void setCoord(int x, int y) {
+        this.coord = new Coord(x, y);
+    }
+    
+    
+    /**
+     * Takes one hull point from the ship
+     */
+    protected void sustainHit() {
+        this.health--;
+        //System.out.println(this);
+        //System.out.println("I was hit!");
+    }
+    
+    //**** Derived Values ****//
+    
+    /**
+     * Derived value based on ship's hull and its damage taken
+     * @return boolean Whether or not the ship is sunken
+    */
+    public boolean isSunk() {
+        return this.getHealth() <= 0;
+    }
+    
+    //************************************//
+    //***** Start of setters/getters *****//
+    //************************************//
+    
+    /**
+     * 
+     */
+    public Ship getSunkBy() {
+        return this.sunkBy;
+    }
+    
+    
+    public Coord getSunkAt() {
+        return this.sunkAt;
+    }
+    
     /**
      * @return String Determines the name of the ship, Ex. "Boaty McBoatFace"
      */
@@ -124,6 +174,22 @@ public abstract class Ship {
      */
     public String getOwner() {
         return this.owner;
+    }
+    
+    /**
+     * Object that contains the ship's location
+     * @return Coord Object with a x and y variable
+    */
+    public Coord getCoord() {
+        return this.coord;
+    }
+    
+    /**
+     * Derived value based on the ship's hull and its damage taken
+     * @return int Value of the ship's remain hull
+    */
+    public int getHealth() {
+        return this.health;
     }
     
     /**
@@ -158,38 +224,6 @@ public abstract class Ship {
         return this.range;
     }
     
-    /**
-     * Object that contains the ship's location
-     * @return Coord Object with a x and y variable
-    */
-    public Coord getCoord() {
-        return this.coord;
-    }
-    
-    protected void setCoord(int x, int y) {
-        this.coord = new Coord(x, y);
-    }
-    
-    /**
-     * Derived value based on the ship's hull and its damage taken
-     * @return int Value of the ship's remain hull
-    */
-    public int getHealth() {
-        return this.health;
-    }
-    
-    /**
-     * Derived value based on ship's hull and its damage taken
-     * @return boolean Whether or not the ship is sunken
-    */
-    public boolean isSunk() {
-        return this.getHealth() <= 0;
-    }
-    
-    protected void sustainHit() {
-        this.health--;
-        //System.out.println(this);
-        //System.out.println("I was hit!");
-    }
+
     
 }

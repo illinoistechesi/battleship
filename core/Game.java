@@ -6,10 +6,14 @@ import java.util.Random;
 
 public class Game {
     
+    public static final int MAX_TURNS = 20;
+    public static final String ARENA_FILE = "files/arena.txt";
+    
     public static void main(String[] args) {
     
         Game game = new Game();
-        game.simpleGame(DeltaShip.class, DeltaShip.class);
+        game.simpleGame(DeltaShip.class, DummyShip.class);
+        Helper.closeAllFiles();
         
     }
     
@@ -33,15 +37,15 @@ public class Game {
     }
     
     public void run(Arena arena) {
-        System.out.println("Initial Map");
-        arena.printArena();
-        for (int t = 0; t < 5; t++) {
+        Helper.writeFileLine(ARENA_FILE, "Initial Map");
+        Helper.writeFileLine(ARENA_FILE, arena.getArenaAsText());
+        for (int t = 0; t < MAX_TURNS; t++) {
             List<Ship> ships = arena.sortShipsByPriority(this);
             for (Ship ship : ships) {
                 ship.doTurn(arena);
             }
-            System.out.println("After T = " + t);
-            arena.printArena();
+            Helper.writeFileLine(ARENA_FILE, "After T = " + t);
+            Helper.writeFileLine(ARENA_FILE, arena.getArenaAsText());
         }
     }
     

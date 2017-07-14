@@ -14,7 +14,14 @@ public class Arena {
     }
     
     public void fire(Ship source, int x, int y) {
-        
+        Ship target = getGrid().get(x, y);
+        if (target != null) {
+            target.sustainHit();
+            if (target.isSunk()) {
+                getGrid().set(x, y, null);
+                // Save where the ship sunk later
+            }
+        }
     }
     
     public void move(Ship source, Direction dir) {
@@ -46,7 +53,21 @@ public class Arena {
     }
     
     public List<Ship> getNearbyEnemies(Ship source) {
-        return new ArrayList<Ship>();
+        List<Ship> res = new ArrayList<Ship>();
+        int range = source.getRange() + 1;
+        int xPos = source.getCoord().getX();
+        int yPos = source.getCoord().getY();
+        for (int x = xPos - range; x < xPos + range; x++) {
+            for (int y = yPos - range; y < yPos + range; y++) {
+                Ship ship = getGrid().get(x, y);
+                if (ship != null) {
+                    if (!ship.equals(source)) {
+                        res.add(ship);
+                    }
+                }
+            }
+        }
+        return res;
     }
     
     public List<Ship> getNearbyAllies(Ship source) {
@@ -80,7 +101,9 @@ public class Arena {
         List<Ship> res = new ArrayList<Ship>();
         for (Ship ship : getGrid().getAll()) {
             if (ship != null) {
-                res.add(ship);
+                if (!ship.isSunk()) {
+                    res.add(ship);
+                }
             }
         }
         return res;
@@ -117,6 +140,22 @@ public class Arena {
             }
             System.out.print("\n");
         }
+    }
+    
+    protected String getArenaAsText() {
+        String out = "";
+        for (int y = 0; y < grid.getYSize(); y++) {
+            for (int x = 0; x < grid.getXSize(); x++) {
+                Ship ship = grid.get(x, y);
+                if (ship != null) {
+                    out += "[" + ship.getHealth() + "]";
+                } else {
+                    out += "[ ]";
+                }
+            }
+            out += "\n";
+        }
+        return out;
     }
     
 }

@@ -24,25 +24,30 @@ public abstract class Ship {
         int pointsRemaining = LIMIT - pointsUsed;
         return Math.min(pointsRemaining, amount);
     }
+    
     /**
      * @param String Set the ships name
      */
     public void initializeName(String name) {
         
     }
+    
     /**
      * @param String Set the ships command/owner
      */
     public void initializeOwner(String owner) {
         
     }
+    
     /**
      * (hull + firepower + speed + range <= LIMIT)
      * @param int initialize Hull of the ship, must be below the LIMIT when summed up
      */
     public void initializeHull(int hull) {
         this.hull = withdrawPoints(hull);
+        this.health = this.hull;
     }
+    
     /**
      * (hull + firepower + speed + range <= LIMIT)
      * @param int initialize Firepower of the ship, must be below the LIMIT when summed up
@@ -50,6 +55,7 @@ public abstract class Ship {
     public void initializeFirepower(int firepower) {
         this.firepower = withdrawPoints(firepower);
     }
+    
     /**
      * (hull + firepower + speed + range <= LIMIT)
      * @param int initialize Speed of the ship, must be below the LIMIT when summed up
@@ -57,6 +63,7 @@ public abstract class Ship {
     public void initializeSpeed(int speed) {
         this.speed = withdrawPoints(speed);
     }
+    
     /**
      * (hull + firepower + speed + range <= LIMIT)
      * @param int initialize Range of the ship, must be below the LIMIT when summed up
@@ -136,7 +143,13 @@ public abstract class Ship {
      * @return boolean Whether or not the ship is sunken
     */
     public boolean isSunk() {
-        return this.getHealth() > 0;
+        return this.getHealth() <= 0;
+    }
+    
+    protected void sustainHit() {
+        this.health--;
+        System.out.println(this);
+        System.out.println("I was hit!");
     }
     
 }

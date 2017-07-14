@@ -10,12 +10,26 @@ public class Coord {
         this.y = y;
     }
     
+    /**
+     * @return int X component of a coordinate
+     */
     public int getX() {
         return this.x;
     }
     
+    /**
+     * @return int Y component of a coordinate
+     */
     public int getY() {
         return this.y;
+    }
+    
+    /**
+     * 
+     */
+    @Override
+    public String toString() {
+        return String.format("(%d, %d)", getX(), getY());
     }
     
 }

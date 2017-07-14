@@ -17,6 +17,30 @@ public abstract class Ship {
         
     }
     
+    private int moves;
+    private int shots;
+    
+    protected void initializeTurn() {
+        this.moves = this.getSpeed();
+        this.shots = this.getFirepower();
+    }
+    
+    public int getRemainingMoves() {
+        return this.moves;
+    }
+    
+    public int getRemainingShots() {
+        return this.shots;
+    }
+    
+    protected void useMove() {
+        this.moves--;
+    }
+    
+    protected void useShot() {
+        this.shots--;
+    }
+    
     public abstract void doTurn(Arena arena);
     
     private int withdrawPoints(int amount) {
@@ -25,18 +49,34 @@ public abstract class Ship {
         return Math.min(pointsRemaining, amount);
     }
     
+    private Ship sunkBy;
+    private Coord sunkAt;
+    
+    public Ship getSunkBy() {
+        return this.sunkBy;
+    }
+    
+    public Coord getSunkAt() {
+        return this.sunkAt;
+    }
+    
+    protected void recordSinking(Ship attacker) {
+        this.sunkBy = attacker;
+        this.sunkAt = this.getCoord();
+    }
+    
     /**
      * @param String Set the ships name
      */
     public void initializeName(String name) {
-        
+        this.name = name;
     }
     
     /**
      * @param String Set the ships command/owner
      */
     public void initializeOwner(String owner) {
-        
+        this.owner = owner;
     }
     
     /**

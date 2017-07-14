@@ -1,4 +1,4 @@
-package samples;
+package combatants;
 import core.*;
 import java.util.List;
 

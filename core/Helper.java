@@ -4,19 +4,6 @@ import java.io.*;
 import java.util.regex.*;
 
 public class Helper {
-
-    private static boolean isSeeded = false;
-    private static Random random = new Random();
-    public static Random getRandom() {
-        if(!isSeeded){
-            Helper.printlnLimitTo("no_seed", "Warning: No seed, values not reproducible.", 1);
-        }
-        return random;
-    }
-    public static void setSeed(int seed){
-        isSeeded = true;
-        random.setSeed(seed);
-    }
     
     private static Map<String, Integer> printRecords = new HashMap<String, Integer>();
     public static void printlnLimitTo(String key, String content, int limit){

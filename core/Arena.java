@@ -14,40 +14,46 @@ public class Arena {
     }
     
     public void fire(Ship source, int x, int y) {
-        Ship target = getGrid().get(x, y);
-        if (target != null) {
-            target.sustainHit();
-            if (target.isSunk()) {
-                getGrid().set(x, y, null);
-                // Save where the ship sunk later
+        if (source.getRemainingShots() > 0) {
+            Ship target = getGrid().get(x, y);
+            if (target != null) {
+                target.sustainHit();
+                source.useShot();
+                if (target.isSunk()) {
+                    getGrid().set(x, y, null);
+                    target.recordSinking(source);
+                }
             }
         }
     }
     
     public void move(Ship source, Direction dir) {
-        int x = source.getCoord().getX();
-        int y = source.getCoord().getY();
-        switch (dir) {
-            case NORTH:
-                y--;
-                break;
-            case SOUTH:
-                y++;
-                break;
-            case WEST:
-                x--;
-                break;
-            case EAST:
-                x++;
-                break;
-        }
-        if (getGrid().get(x, y) == null) {
-            boolean success = getGrid().set(x, y, source);
-            if (success) {
-                int oldX = source.getCoord().getX();
-                int oldY = source.getCoord().getY();
-                getGrid().set(oldX, oldY, null);
-                source.setCoord(x, y);
+        if (source.getRemainingMoves() > 0) {
+            int x = source.getCoord().getX();
+            int y = source.getCoord().getY();
+            switch (dir) {
+                case NORTH:
+                    y--;
+                    break;
+                case SOUTH:
+                    y++;
+                    break;
+                case WEST:
+                    x--;
+                    break;
+                case EAST:
+                    x++;
+                    break;
+            }
+            if (getGrid().get(x, y) == null) {
+                boolean success = getGrid().set(x, y, source);
+                if (success) {
+                    int oldX = source.getCoord().getX();
+                    int oldY = source.getCoord().getY();
+                    getGrid().set(oldX, oldY, null);
+                    source.setCoord(x, y);
+                    source.useMove();
+                }
             }
         }
     }

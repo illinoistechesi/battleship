@@ -178,7 +178,7 @@ public abstract class Ship {
         return arena.getShipCoord(this, ship);
     }
     
-    public Coord getSelfCoord(Arena arena) {
+    Coord getSelfCoord(Arena arena) {
         return arena.getShipCoord(this, this);
     }
     

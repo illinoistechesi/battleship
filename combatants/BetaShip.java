@@ -36,8 +36,6 @@ public class BetaShip extends Ship {
         
             public boolean isInRange(Ship self, Ship target) 
             
-            public Coord getShipCoord(Ship self, Ship target)
-            
         Ship
             public boolean isSunk()
             
@@ -52,6 +50,10 @@ public class BetaShip extends Ship {
             public int getFirepower()
             public int getSpeed()
             public int getRange()
+            
+            Coord getShipCoord(Arena arena, Ship target)
+
+            Coord getSelfCoord(Arena arena)
             
         Direction
             NORTH, SOUTH, WEST, EAST

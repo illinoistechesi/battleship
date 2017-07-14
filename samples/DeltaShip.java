@@ -56,7 +56,7 @@ public class DeltaShip extends Ship {
             }
         }
         for (int m = 0; m < this.getSpeed(); m++) {
-            arena.move(this, Direction.LEFT);
+            arena.move(this, Direction.NORTH);
         }
     }
     

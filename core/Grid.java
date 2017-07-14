@@ -36,10 +36,13 @@ public class Grid<T> {
         return res;
     }
     
-    public void set(int x, int y, T obj) {
+    public boolean set(int x, int y, T obj) {
+        boolean success = false;
         if (this.isInBounds(x, y)) {
             grid.get(y).set(x, obj);
+            success = true;
         }
+        return success;
     }
     
     public int getXSize() {

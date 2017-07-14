@@ -148,8 +148,8 @@ public abstract class Ship {
     
     protected void sustainHit() {
         this.health--;
-        System.out.println(this);
-        System.out.println("I was hit!");
+        //System.out.println(this);
+        //System.out.println("I was hit!");
     }
     
 }

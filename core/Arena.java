@@ -109,19 +109,29 @@ public class Arena {
         return res;
     }
     
-    protected List<Ship> sortShipsByPriority(Game game) {
+    protected List<Ship> sortShipsByPriority() {
         List<Ship> ships = this.getAllShips();
         Collections.sort(ships, new Comparator<Ship>() {
             public int compare(Ship s1, Ship s2) {
                 double p1 = (double) s1.getSpeed();
                 double p2 = (double) s2.getSpeed();
-                p1 += game.getRandom().nextDouble();
-                p2 += game.getRandom().nextDouble();
+                p1 += getRandom().nextDouble();
+                p2 += getRandom().nextDouble();
                 double diff = p2 - p1;
                 return (int) diff;
             }
         });
         return ships;
+    }
+    
+    private Random random = new Random();
+    
+    public Random getRandom() {
+        return this.random;
+    }
+    
+    protected void setSeed(int seed) {
+        this.getRandom().setSeed(seed);
     }
     
     protected Grid<Ship> getGrid() {

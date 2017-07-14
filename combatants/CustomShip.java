@@ -3,15 +3,15 @@ import core.*;
 import java.util.List;
 
 /*
- * Dummy Ship
- * @author The Evil Fleet
+ * Custom Ship
+ * @author Your Name
  */
-public class DummyShip extends Ship {
+public class CustomShip extends Ship {
     
-    public DummyShip() {
-        this.initializeName("Dummy Ship");
-        this.initializeOwner("The Evil Fleet");
-        this.initializeHull(7);
+    public CustomShip() {
+        this.initializeName("Custom Ship");
+        this.initializeOwner("Your Name");
+        this.initializeHull(1);
         this.initializeFirepower(1);
         this.initializeSpeed(1);
         this.initializeRange(1);

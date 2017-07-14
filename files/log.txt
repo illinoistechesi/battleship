@@ -1,0 +1,76 @@
+Turn 0
+- Moved North, now at (5, 4).
+- Moved North, now at (5, 3).
+- Moved North, now at (5, 2).
+Turn 1
+- Fired at (3, 1), hit ship, hull strength remaining: 6
+- Fired at (3, 1), hit ship, hull strength remaining: 5
+- Moved North, now at (5, 1).
+- Moved North, but space was occupied by another object.
+- Moved North, but space was occupied by another object.
+Turn 2
+- Fired at (3, 1), hit ship, hull strength remaining: 4
+- Fired at (3, 1), hit ship, hull strength remaining: 3
+- Moved North, but space was occupied by another object.
+- Moved North, but space was occupied by another object.
+- Moved North, but space was occupied by another object.
+Turn 3
+- Fired at (3, 1), hit ship, hull strength remaining: 2
+- Fired at (3, 1), hit ship, hull strength remaining: 1
+- Moved North, but space was occupied by another object.
+- Moved North, but space was occupied by another object.
+- Moved North, but space was occupied by another object.
+Turn 4
+- Fired at (3, 1), sunk ship!
+- Fired at (3, 1), could not find a target.
+- Moved North, but space was occupied by another object.
+- Moved North, but space was occupied by another object.
+- Moved North, but space was occupied by another object.
+Turn 5
+- Fired at (4, 0), hit ship, hull strength remaining: 6
+- Fired at (4, 0), hit ship, hull strength remaining: 5
+- Moved North, but space was occupied by another object.
+- Moved North, but space was occupied by another object.
+- Moved North, but space was occupied by another object.
+Turn 6
+- Fired at (4, 0), hit ship, hull strength remaining: 4
+- Fired at (4, 0), hit ship, hull strength remaining: 3
+- Moved North, but space was occupied by another object.
+- Moved North, but space was occupied by another object.
+- Moved North, but space was occupied by another object.
+Turn 7
+- Fired at (4, 0), hit ship, hull strength remaining: 2
+- Fired at (4, 0), hit ship, hull strength remaining: 1
+- Moved North, but space was occupied by another object.
+- Moved North, but space was occupied by another object.
+- Moved North, but space was occupied by another object.
+Turn 8
+- Fired at (4, 0), sunk ship!
+- Fired at (4, 0), could not find a target.
+- Moved North, but space was occupied by another object.
+- Moved North, but space was occupied by another object.
+- Moved North, but space was occupied by another object.
+Turn 9
+- Fired at (5, 0), hit ship, hull strength remaining: 6
+- Fired at (5, 0), hit ship, hull strength remaining: 5
+- Moved North, but space was occupied by another object.
+- Moved North, but space was occupied by another object.
+- Moved North, but space was occupied by another object.
+Turn 10
+- Fired at (5, 0), hit ship, hull strength remaining: 4
+- Fired at (5, 0), hit ship, hull strength remaining: 3
+- Moved North, but space was occupied by another object.
+- Moved North, but space was occupied by another object.
+- Moved North, but space was occupied by another object.
+Turn 11
+- Fired at (5, 0), hit ship, hull strength remaining: 2
+- Fired at (5, 0), hit ship, hull strength remaining: 1
+- Moved North, but space was occupied by another object.
+- Moved North, but space was occupied by another object.
+- Moved North, but space was occupied by another object.
+Turn 12
+- Fired at (5, 0), sunk ship!
+- Fired at (5, 0), could not find a target.
+- Moved North, now at (5, 0).
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.

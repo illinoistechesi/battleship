@@ -16,17 +16,30 @@ public abstract class Ship {
     private int speed;
     private int range;
     
+    private int moves;
+    private int shots;
+    private Ship sunkBy;
+    private Coord sunkAt;
     
     public Ship() {
         
     }
     
-    private int moves;
-    private int shots;
+    public abstract void doTurn(Arena arena);
     
     protected void initializeTurn() {
         this.moves = this.getSpeed();
         this.shots = this.getFirepower();
+    }
+    
+    protected void setCoord(int x, int y) {
+        this.coord = new Coord(x, y);
+    }
+    
+    protected void sustainHit() {
+        this.health--;
+        //System.out.println(this);
+        //System.out.println("I was hit!");
     }
     
     public int getRemainingMoves() {
@@ -45,18 +58,12 @@ public abstract class Ship {
         this.shots--;
     }
     
-    public abstract void doTurn(Arena arena);
-    
     private int withdrawPoints(int amount) {
         int pointsUsed = getHull() + getFirepower() + getSpeed() + getRange();
         int pointsRemaining = LIMIT - pointsUsed;
         return Math.min(pointsRemaining, amount);
     }
     
-    private Ship sunkBy;
-    private Coord sunkAt;
-    
-
     /**
      * This method will not be used directly outside of the API
      * @param Ship Takes a ship object that sunk the current ship
@@ -117,26 +124,9 @@ public abstract class Ship {
     
 
     
-    /**
-     * This method will not be used directly outside of the API
-     * @param int X component of a coordinate
-     * @param int Y component of a coordinate
-     */
-    protected void setCoord(int x, int y) {
-        this.coord = new Coord(x, y);
-    }
-    
-    
-    /**
-     * Takes one hull point from the ship
-     */
-    protected void sustainHit() {
-        this.health--;
-        //System.out.println(this);
-        //System.out.println("I was hit!");
-    }
-    
+    //************************//
     //**** Derived Values ****//
+    //************************//
     
     /**
      * Derived value based on ship's hull and its damage taken
@@ -180,8 +170,16 @@ public abstract class Ship {
      * Object that contains the ship's location
      * @return Coord Object with a x and y variable
     */
-    public Coord getCoord() {
+    protected Coord getCoord() {
         return this.coord;
+    }
+    
+    public Coord getShipCoord(Arena arena, Ship ship) {
+        return arena.getShipCoord(this, ship);
+    }
+    
+    public Coord getSelfCoord(Arena arena) {
+        return arena.getShipCoord(this, this);
     }
     
     /**

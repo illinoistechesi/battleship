@@ -7,27 +7,50 @@ import java.util.Comparator;
 
 public class Arena {
     
-    Grid<Ship> grid;
+    private Grid<Ship> grid;
+    private Random random = new Random();
     
     public Arena(int xSize, int ySize) {
         this.grid = new Grid<Ship>(xSize, ySize);
     }
     
     public void fire(Ship source, int x, int y) {
+        String detail = "- Fired at (" + x + ", " + y + "), ";
         if (source.getRemainingShots() > 0) {
             Ship target = getGrid().get(x, y);
             if (target != null) {
-                target.sustainHit();
-                source.useShot();
-                if (target.isSunk()) {
-                    getGrid().set(x, y, null);
-                    target.recordSinking(source);
+                if (this.isInRange(source, target)) {
+                    target.sustainHit();
+                    source.useShot();
+                    if (target.isSunk()) {
+                        getGrid().set(x, y, null);
+                        target.recordSinking(source);
+                        detail += "sunk ship!";
+                    } else {
+                        detail += "hit ship, hull strength remaining: ";
+                        detail += target.getHealth();
+                    }
+                } else {
+                    detail += "ship was out of range.";
                 }
+            } else {
+                detail += "could not find a target.";
             }
+        } else {
+            detail += "no shots remaining on this turn.";
+        }
+        if (inDebugMode()) {
+            Helper.writeFileLine(DEBUG_FILE, detail);
         }
     }
     
+    /**
+     * 
+     * @param Ship Object that is moving
+     * @param Direction 
+     */
     public void move(Ship source, Direction dir) {
+        String detail = "- Moved " + dir + ", ";
         if (source.getRemainingMoves() > 0) {
             int x = source.getCoord().getX();
             int y = source.getCoord().getY();
@@ -53,18 +76,33 @@ public class Arena {
                     getGrid().set(oldX, oldY, null);
                     source.setCoord(x, y);
                     source.useMove();
+                    detail += "now at (" + x + ", " + y+ ").";
+                } else {
+                    detail += "reached edge of the map.";
                 }
+            } else {
+                detail += "but space was occupied by another object.";
             }
+        } else {
+            detail += "no moves remaining on this turn.";
+        }
+        if (inDebugMode()) {
+            Helper.writeFileLine(DEBUG_FILE, detail);
         }
     }
     
+    /**
+     * This will return a list of enemy ships that the current ship can see (Does not include your own ship)
+     * @param Ship object to reference when looking for nearby enemy ships
+     * @return List<Ship> list of enemy ships
+     */
     public List<Ship> getNearbyEnemies(Ship source) {
         List<Ship> res = new ArrayList<Ship>();
-        int range = source.getRange() + 1;
+        int range = source.getRange();
         int xPos = source.getCoord().getX();
         int yPos = source.getCoord().getY();
-        for (int x = xPos - range; x < xPos + range; x++) {
-            for (int y = yPos - range; y < yPos + range; y++) {
+        for (int x = xPos - range; x <= xPos + range; x++) {
+            for (int y = yPos - range; y <= yPos + range; y++) {
                 Ship ship = getGrid().get(x, y);
                 if (ship != null) {
                     if (!ship.equals(source)) {
@@ -75,6 +113,45 @@ public class Arena {
         }
         return res;
     }
+    
+    public boolean isInRange(Ship self, Ship target) {
+        Coord st = self.getCoord();
+        Coord ct = target.getCoord();
+        int range = self.getRange();
+        int[] sXRange = {st.getX() - range, st.getX() + range};
+        int[] sYRange = {st.getY() - range, st.getY() + range};
+        boolean inXRange = ct.getX() >= sXRange[0] && ct.getX() <= sXRange[1];
+        boolean inYRange = ct.getY() >= sYRange[0] && ct.getY() <= sYRange[1];
+        return inXRange && inYRange;
+    }
+    
+    protected Coord getShipCoord(Ship self, Ship target) {
+        Coord res = null;
+        if (this.isInRange(self, target)) {
+            res = target.getCoord();
+        }
+        return res;
+    }
+    
+    public Coord getShipCoord(Ship self) {
+        return self.getCoord();
+    }
+    
+    private String DEBUG_FILE = null;
+    private boolean debugMode = false;
+    
+    public boolean inDebugMode() {
+        return this.debugMode && DEBUG_FILE != null;
+    }
+    
+    public void setDebugMode(boolean mode, String filename) {
+        this.debugMode = mode;
+        this.DEBUG_FILE = filename;
+    }
+    
+    //*********************************//
+    //**** TO BE IMPLEMENTED LATER ****//
+    //*********************************//
     
     public List<Ship> getNearbyAllies(Ship source) {
         return new ArrayList<Ship>();
@@ -91,6 +168,14 @@ public class Arena {
     public int countAllies(Ship source) {
         return 0;
     }
+    
+    public Random getRandom() {
+        return this.random;
+    }
+    
+    //***************************************************//
+    //**** Protected Method not used by custom ships ****//
+    //***************************************************//
     
     protected boolean spawnShip(int x, int y, Ship ship) {
         boolean success = false;
@@ -128,12 +213,6 @@ public class Arena {
             }
         });
         return ships;
-    }
-    
-    private Random random = new Random();
-    
-    public Random getRandom() {
-        return this.random;
     }
     
     protected void setSeed(int seed) {

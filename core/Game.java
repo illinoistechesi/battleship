@@ -8,8 +8,16 @@ public class Game {
     
     public static final int MAX_TURNS = 50;
     public static final String ARENA_FILE = "files/arena.txt";
+    public static boolean DEBUG_MODE = false;
+    public static String DEBUG_FILE = "files/log.txt"; 
     
     public static void main(String[] args) {
+    
+        if (args.length >= 1) {
+            if (args[0].equals("-d")) {
+                DEBUG_MODE = true;   
+            }
+        }
     
         Game game = new Game();
         Class<? extends Ship> player = DeltaShip.class;
@@ -96,9 +104,11 @@ public class Game {
         System.out.println(objective.getObjective());
         Helper.writeFileLine(ARENA_FILE, "Initial Map");
         Helper.writeFileLine(ARENA_FILE, arena.getArenaAsText());
+        arena.setDebugMode(DEBUG_MODE, DEBUG_FILE);
         boolean success = false;
         int t = 0;
         while (t < MAX_TURNS) {
+            Helper.writeFileLine(DEBUG_FILE, "Turn " + t);
             if (t % 10 == 0) {
                 System.out.println("Turn " + t);
             }

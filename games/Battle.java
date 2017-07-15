@@ -36,9 +36,9 @@ public class Battle extends Game {
     }
     
     public Battle() {
-        combatants.add(ships.KannanShip.class);
+        combatants.add(ships.CustomShip.class);
         combatants.add(games.DummyShip.class);
-        combatants.add(ships.NickShip.class);
+        combatants.add(ships.CustomShip.class);
         Arena arena = initializeArena();
         setArena(arena);
     }

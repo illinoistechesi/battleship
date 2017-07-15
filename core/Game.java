@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public abstract class Game {
     
+    private Arena arena;
+    
     public Game() {
         
     }
@@ -12,38 +14,54 @@ public abstract class Game {
     
     public abstract Arena initializeArena();
     
-    public abstract boolean isCompleted(Arena arena);
+    public abstract boolean isCompleted();
     
-    public abstract String getResults(Arena arena);
+    public abstract String getResults();
     
-    public abstract void run(Arena arena);
+    public abstract void run();
+    
+    public Arena getArena() {
+        return this.arena;
+    }
+    
+    public void setArena(Arena arena) {
+        this.arena = arena;
+    }
     
     /*
      * Functions for building games outside of core package
      */
     
-    protected Coord getShipCoord(Ship ship) {
+    public Coord getShipCoord(Ship ship) {
         return ship.getCoord();
     }
     
-    protected void setSeed(Arena arena, int seed) {
+    public void setSeed(Arena arena, int seed) {
         arena.setSeed(seed);
     }
     
-    protected boolean spawnShip(Arena arena, int x, int y, Ship ship) {
+    public boolean spawnShip(Arena arena, int x, int y, Ship ship) {
         return arena.spawnShip(x, y, ship);
     }
     
-    protected String getArenaAsText(Arena arena) {
+    public String getArenaAsText(Arena arena) {
         return arena.getArenaAsText();
     }
     
-    protected List<Ship> sortShipsByPriority(Arena arena) {
+    public List<Ship> sortShipsByPriority(Arena arena) {
         return arena.sortShipsByPriority();
     }
     
-    protected void initializeTurn(Ship ship) {
+    public void initializeTurn(Ship ship) {
         ship.initializeTurn();
+    }
+    
+    public List<Ship> getAllShips(Arena arena) {
+        return arena.getAllShips();
+    }
+    
+    public List<Ship> getAllSpawnedShips(Arena arena) {
+        return arena.getAllSpawnedShips();
     }
     
     public void runMission(Arena arena, int maxTurns, boolean debugMode,
@@ -66,11 +84,12 @@ public abstract class Game {
             }
             Helper.writeFileLine(arenaFile, "After T = " + t);
             Helper.writeFileLine(arenaFile, this.getArenaAsText(arena));
-            if (this.isCompleted(arena)) {
+            if (this.isCompleted()) {
                 success = true;
                 break;
             } else {
                 t++;
+                arena.nextTurn();
             }
         }
         if (!success) {
@@ -78,7 +97,7 @@ public abstract class Game {
         } else {
             System.out.println("Game completed after " + t + " turns.");
         }
-        System.out.println(this.getResults(arena));   
+        System.out.println(this.getResults());   
     }
     
 }

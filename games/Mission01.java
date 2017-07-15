@@ -16,8 +16,7 @@ public class Mission01 extends Game {
     public Mission01(Class<? extends Ship> c) {
         PLAYER_CLASS = c;
         Arena arena = initializeArena();
-        run(arena);
-        Helper.closeAllFiles();
+        setArena(arena);
     }
     
     @Override
@@ -62,7 +61,7 @@ public class Mission01 extends Game {
     }
     
     @Override
-    public boolean isCompleted(Arena gameArena) {
+    public boolean isCompleted() {
         int enemiesSunk = 0;
         for (Ship enemyShip : enemies) {
             if (enemyShip.isSunk()) {
@@ -73,7 +72,7 @@ public class Mission01 extends Game {
     }
     
     @Override
-    public String getResults(Arena arena) {
+    public String getResults() {
         int enemiesSunk = 0;
         List<Ship> sunk = new ArrayList<Ship>();
         for (Ship enemyShip : enemies) {
@@ -91,8 +90,8 @@ public class Mission01 extends Game {
     }
 
     @Override
-    public void run(Arena arena) {
-        this.runMission(arena, MAX_TURNS, DEBUG_MODE, ARENA_FILE, DEBUG_FILE);
+    public void run() {
+        this.runMission(getArena(), MAX_TURNS, DEBUG_MODE, ARENA_FILE, DEBUG_FILE);
     }
    
 }

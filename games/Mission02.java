@@ -17,8 +17,7 @@ public class Mission02 extends Game {
     public Mission02(Class<? extends Ship> c) {
         PLAYER_CLASS = c;
         Arena arena = initializeArena();
-        run(arena);
-        Helper.closeAllFiles();
+        setArena(arena);
     }
     
     @Override
@@ -64,7 +63,7 @@ public class Mission02 extends Game {
     }
     
     @Override
-    public boolean isCompleted(Arena gameArena) {
+    public boolean isCompleted() {
         boolean success = false;
         Coord coord = this.getShipCoord(player);
         if (coord.getX() == 9) {
@@ -74,13 +73,13 @@ public class Mission02 extends Game {
     }
     
     @Override
-    public String getResults(Arena arena) {
+    public String getResults() {
         return "No additional details to report.";
     }
 
     @Override
-    public void run(Arena arena) {
-        this.runMission(arena, MAX_TURNS, DEBUG_MODE, ARENA_FILE, DEBUG_FILE);
+    public void run() {
+        this.runMission(getArena(), MAX_TURNS, DEBUG_MODE, ARENA_FILE, DEBUG_FILE);
     }
    
 }

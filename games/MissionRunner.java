@@ -18,7 +18,7 @@ public class MissionRunner {
             Class<?> c = Class.forName(className);
             @SuppressWarnings("unchecked")
             Class<? extends Ship> playerClass = (Class<? extends Ship>) c;
-            Game mission;
+            Game mission = null;
             switch (n) {
                 case 1:
                     mission = new Mission01(playerClass);
@@ -28,6 +28,10 @@ public class MissionRunner {
                     break;
                 default:
                     System.out.println("Could not find Mission  #" + n + ".");
+            }
+            if (mission != null) {
+                mission.run();
+                Helper.closeAllFiles();
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -7,8 +7,11 @@ import java.util.Comparator;
 
 public class Arena {
     
+    private int turn = 0;
+    private List<Ship> ships = new ArrayList<Ship>();
     private Grid<Ship> grid;
     private Random random = new Random();
+    public List<Action> actions = new ArrayList<Action>();
     
     public Arena(int xSize, int ySize) {
         this.grid = new Grid<Ship>(xSize, ySize);
@@ -42,6 +45,7 @@ public class Arena {
         if (inDebugMode()) {
             Helper.writeFileLine(DEBUG_FILE, detail);
         }
+        actions.add(new Action(source, getTurn(), x, y));
     }
     
     /**
@@ -89,6 +93,7 @@ public class Arena {
         if (inDebugMode()) {
             Helper.writeFileLine(DEBUG_FILE, detail);
         }
+        actions.add(new Action(source, getTurn(), dir));
     }
     
     /**
@@ -173,6 +178,14 @@ public class Arena {
         return this.random;
     }
     
+    protected void nextTurn() {
+        this.turn++;    
+    }
+    
+    public int getTurn() {
+        return this.turn;
+    }
+    
     //***************************************************//
     //**** Protected Method not used by custom ships ****//
     //***************************************************//
@@ -183,12 +196,13 @@ public class Arena {
             success = getGrid().set(x, y, ship);
             if (success) {
                 ship.setCoord(x, y);
+                this.ships.add(ship);
             }
         }
         return success;
     }
     
-    private List<Ship> getAllShips() {
+    protected List<Ship> getAllShips() {
         List<Ship> res = new ArrayList<Ship>();
         for (Ship ship : getGrid().getAll()) {
             if (ship != null) {
@@ -198,6 +212,10 @@ public class Arena {
             }
         }
         return res;
+    }
+    
+    protected List<Ship> getAllSpawnedShips() {
+        return this.ships;
     }
     
     protected List<Ship> sortShipsByPriority() {

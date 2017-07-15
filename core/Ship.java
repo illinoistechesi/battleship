@@ -174,11 +174,11 @@ public abstract class Ship {
         return this.coord;
     }
     
-    Coord getShipCoord(Arena arena, Ship ship) {
+    protected Coord getShipCoord(Arena arena, Ship ship) {
         return arena.getShipCoord(this, ship);
     }
     
-    Coord getSelfCoord(Arena arena) {
+    protected Coord getSelfCoord(Arena arena) {
         return arena.getShipCoord(this, this);
     }
     

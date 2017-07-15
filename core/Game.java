@@ -20,7 +20,7 @@ public class Game {
         }
     
         Game game = new Game();
-        Class<? extends Ship> player = DeltaShip.class;
+        Class<? extends Ship> player = NickShip.class;
         Class<? extends Ship> enemy = DummyShip.class;
         game.simpleGame(player, enemy);
         Helper.closeAllFiles();

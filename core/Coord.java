@@ -25,7 +25,7 @@ public class Coord {
     }
     
     /**
-     * @return String Information on the coordinate
+     * 
      */
     @Override
     public String toString() {

@@ -1,76 +1,150 @@
 Turn 0
-- Moved North, now at (5, 4).
-- Moved North, now at (5, 3).
-- Moved North, now at (5, 2).
+- Moved West, now at (4, 5).
+- Moved North, now at (4, 4).
 Turn 1
-- Fired at (3, 1), hit ship, hull strength remaining: 6
-- Fired at (3, 1), hit ship, hull strength remaining: 5
-- Moved North, now at (5, 1).
-- Moved North, but space was occupied by another object.
-- Moved North, but space was occupied by another object.
+- Moved West, now at (3, 4).
+- Moved North, now at (3, 3).
 Turn 2
-- Fired at (3, 1), hit ship, hull strength remaining: 4
-- Fired at (3, 1), hit ship, hull strength remaining: 3
-- Moved North, but space was occupied by another object.
-- Moved North, but space was occupied by another object.
-- Moved North, but space was occupied by another object.
+- Moved West, now at (2, 3).
+- Moved North, now at (2, 2).
 Turn 3
-- Fired at (3, 1), hit ship, hull strength remaining: 2
-- Fired at (3, 1), hit ship, hull strength remaining: 1
-- Moved North, but space was occupied by another object.
-- Moved North, but space was occupied by another object.
-- Moved North, but space was occupied by another object.
+- Moved West, now at (1, 2).
+- Moved North, now at (1, 1).
 Turn 4
-- Fired at (3, 1), sunk ship!
-- Fired at (3, 1), could not find a target.
-- Moved North, but space was occupied by another object.
-- Moved North, but space was occupied by another object.
-- Moved North, but space was occupied by another object.
+- Moved West, now at (0, 1).
+- Moved North, now at (0, 0).
 Turn 5
-- Fired at (4, 0), hit ship, hull strength remaining: 6
-- Fired at (4, 0), hit ship, hull strength remaining: 5
-- Moved North, but space was occupied by another object.
-- Moved North, but space was occupied by another object.
-- Moved North, but space was occupied by another object.
-Turn 6
-- Fired at (4, 0), hit ship, hull strength remaining: 4
-- Fired at (4, 0), hit ship, hull strength remaining: 3
-- Moved North, but space was occupied by another object.
-- Moved North, but space was occupied by another object.
-- Moved North, but space was occupied by another object.
-Turn 7
-- Fired at (4, 0), hit ship, hull strength remaining: 2
-- Fired at (4, 0), hit ship, hull strength remaining: 1
-- Moved North, but space was occupied by another object.
-- Moved North, but space was occupied by another object.
-- Moved North, but space was occupied by another object.
-Turn 8
-- Fired at (4, 0), sunk ship!
-- Fired at (4, 0), could not find a target.
-- Moved North, but space was occupied by another object.
-- Moved North, but space was occupied by another object.
-- Moved North, but space was occupied by another object.
-Turn 9
-- Fired at (5, 0), hit ship, hull strength remaining: 6
-- Fired at (5, 0), hit ship, hull strength remaining: 5
-- Moved North, but space was occupied by another object.
-- Moved North, but space was occupied by another object.
-- Moved North, but space was occupied by another object.
-Turn 10
-- Fired at (5, 0), hit ship, hull strength remaining: 4
-- Fired at (5, 0), hit ship, hull strength remaining: 3
-- Moved North, but space was occupied by another object.
-- Moved North, but space was occupied by another object.
-- Moved North, but space was occupied by another object.
-Turn 11
-- Fired at (5, 0), hit ship, hull strength remaining: 2
-- Fired at (5, 0), hit ship, hull strength remaining: 1
-- Moved North, but space was occupied by another object.
-- Moved North, but space was occupied by another object.
-- Moved North, but space was occupied by another object.
-Turn 12
-- Fired at (5, 0), sunk ship!
-- Fired at (5, 0), could not find a target.
-- Moved North, now at (5, 0).
+- Moved West, reached edge of the map.
 - Moved North, reached edge of the map.
+Turn 6
+- Moved West, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 7
+- Moved West, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 8
+- Moved West, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 9
+- Moved West, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 10
+- Moved West, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 11
+- Moved West, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 12
+- Moved West, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 13
+- Moved West, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 14
+- Moved West, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 15
+- Moved West, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 16
+- Moved West, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 17
+- Moved West, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 18
+- Moved West, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 19
+- Moved West, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 20
+- Moved West, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 21
+- Moved West, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 22
+- Moved West, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 23
+- Moved West, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 24
+- Moved West, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 25
+- Moved West, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 26
+- Moved West, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 27
+- Moved West, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 28
+- Moved West, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 29
+- Moved West, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 30
+- Moved West, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 31
+- Moved West, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 32
+- Moved West, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 33
+- Moved West, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 34
+- Moved West, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 35
+- Moved West, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 36
+- Moved West, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 37
+- Moved West, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 38
+- Moved West, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 39
+- Moved West, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 40
+- Moved West, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 41
+- Moved West, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 42
+- Moved West, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 43
+- Moved West, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 44
+- Moved West, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 45
+- Moved West, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 46
+- Moved West, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 47
+- Moved West, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 48
+- Moved West, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 49
+- Moved West, reached edge of the map.
 - Moved North, reached edge of the map.

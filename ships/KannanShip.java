@@ -1,15 +1,15 @@
-package combatants;
+package ships;
 import core.*;
 import java.util.List;
 
 /*
- * Custom Ship
+ * Kannan Ship
  * @author Your Name
  */
-public class CustomShip extends Ship {
+public class KannanShip extends Ship {
     
-    public CustomShip() {
-        this.initializeName("Custom Ship");
+    public KannanShip() {
+        this.initializeName("Kannan Ship");
         this.initializeOwner("Your Name");
         this.initializeHull(1);
         this.initializeFirepower(1);

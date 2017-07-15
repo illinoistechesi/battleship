@@ -1,4 +1,4 @@
-package combatants;
+package ships;
 import core.*;
 import java.util.List;
 
@@ -46,6 +46,7 @@ public class NickShip extends Ship {
         else if (shipY > goalY) {
             arena.move(this, Direction.NORTH);
         }
+        // 5 < 1
         else if (shipY < goalY) {
             arena.move(this, Direction.SOUTH);
         }

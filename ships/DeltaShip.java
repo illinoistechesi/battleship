@@ -1,4 +1,4 @@
-package combatants;
+package ships;
 import core.*;
 import java.util.List;
 

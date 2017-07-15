@@ -1,100 +1,13 @@
 Turn 0
-- Moved West, now at (4, 5).
 Turn 1
-- Moved North, now at (4, 4).
 Turn 2
-- Moved North, now at (4, 3).
 Turn 3
-- Moved North, now at (4, 2).
 Turn 4
-- Moved North, now at (4, 1).
 Turn 5
-- Fired at (3, 1), hit ship, hull strength remaining: 6
 Turn 6
-- Fired at (3, 1), hit ship, hull strength remaining: 5
 Turn 7
-- Fired at (3, 1), hit ship, hull strength remaining: 4
 Turn 8
-- Fired at (3, 1), hit ship, hull strength remaining: 3
 Turn 9
-- Fired at (3, 1), hit ship, hull strength remaining: 2
 Turn 10
-- Fired at (3, 1), hit ship, hull strength remaining: 1
 Turn 11
-- Fired at (3, 1), sunk ship!
 Turn 12
-- Fired at (3, 1), could not find a target.
-Turn 13
-- Fired at (3, 1), could not find a target.
-Turn 14
-- Fired at (3, 1), could not find a target.
-Turn 15
-- Fired at (3, 1), could not find a target.
-Turn 16
-- Fired at (3, 1), could not find a target.
-Turn 17
-- Fired at (3, 1), could not find a target.
-Turn 18
-- Fired at (3, 1), could not find a target.
-Turn 19
-- Fired at (3, 1), could not find a target.
-Turn 20
-- Fired at (3, 1), could not find a target.
-Turn 21
-- Fired at (3, 1), could not find a target.
-Turn 22
-- Fired at (3, 1), could not find a target.
-Turn 23
-- Fired at (3, 1), could not find a target.
-Turn 24
-- Fired at (3, 1), could not find a target.
-Turn 25
-- Fired at (3, 1), could not find a target.
-Turn 26
-- Fired at (3, 1), could not find a target.
-Turn 27
-- Fired at (3, 1), could not find a target.
-Turn 28
-- Fired at (3, 1), could not find a target.
-Turn 29
-- Fired at (3, 1), could not find a target.
-Turn 30
-- Fired at (3, 1), could not find a target.
-Turn 31
-- Fired at (3, 1), could not find a target.
-Turn 32
-- Fired at (3, 1), could not find a target.
-Turn 33
-- Fired at (3, 1), could not find a target.
-Turn 34
-- Fired at (3, 1), could not find a target.
-Turn 35
-- Fired at (3, 1), could not find a target.
-Turn 36
-- Fired at (3, 1), could not find a target.
-Turn 37
-- Fired at (3, 1), could not find a target.
-Turn 38
-- Fired at (3, 1), could not find a target.
-Turn 39
-- Fired at (3, 1), could not find a target.
-Turn 40
-- Fired at (3, 1), could not find a target.
-Turn 41
-- Fired at (3, 1), could not find a target.
-Turn 42
-- Fired at (3, 1), could not find a target.
-Turn 43
-- Fired at (3, 1), could not find a target.
-Turn 44
-- Fired at (3, 1), could not find a target.
-Turn 45
-- Fired at (3, 1), could not find a target.
-Turn 46
-- Fired at (3, 1), could not find a target.
-Turn 47
-- Fired at (3, 1), could not find a target.
-Turn 48
-- Fired at (3, 1), could not find a target.
-Turn 49
-- Fired at (3, 1), could not find a target.

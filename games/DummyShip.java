@@ -1,4 +1,4 @@
-package combatants;
+package games;
 import core.*;
 import java.util.List;
 

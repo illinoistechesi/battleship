@@ -2,3 +2,4 @@
 rm -rf core/*.class
 rm -rf ships/*.class
 rm -rf games/*.class
+rm -rf files/*.txt

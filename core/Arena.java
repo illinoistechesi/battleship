@@ -257,19 +257,20 @@ public class Arena {
     
     protected String getArenaAsText() {
         String out = "";
-        out += "   ";
+        out += "    ";
         for (int h = 0; h < grid.getXSize(); h++) {
-            out += String.format(" %d ", h);
+            out += String.format(" %02d ", h);
         }
         out += "\n";
         for (int y = 0; y < grid.getYSize(); y++) {
-            out += String.format(" %d ", y);
+            out += String.format(" %02d ", y);
             for (int x = 0; x < grid.getXSize(); x++) {
                 Ship ship = grid.get(x, y);
                 if (ship != null) {
-                    out += "[" + ship.getHealth() + "]";
+                    String flag = ship.getName().substring(0, 1);
+                    out += String.format("[%s%d]", flag, ship.getHealth());
                 } else {
-                    out += " ~ ";
+                    out += " ~~ ";
                 }
             }
             out += "\n";

@@ -18,6 +18,9 @@
 *.tar.gz
 *.rar
 
+# Game Files
+files/*
+
 # Experimental Files
 lib/*
 BattleServer.java

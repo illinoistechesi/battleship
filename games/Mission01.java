@@ -1,17 +1,11 @@
 package games;
 import core.*;
 import ships.*;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Random;
+import java.util.*;
 
 public class Mission01 extends Game {
     
-    public static Class<? extends Ship> PLAYER_CLASS = games.DummyShip.class;
-    public static final int MAX_TURNS = 50;
-    public static boolean DEBUG_MODE = true;
-    public static final String ARENA_FILE = "files/arena.txt";
-    public static String DEBUG_FILE = "files/log.txt";
+    public Class<? extends Ship> PLAYER_CLASS = games.DummyShip.class;
     
     public Mission01(Class<? extends Ship> c) {
         PLAYER_CLASS = c;
@@ -24,6 +18,7 @@ public class Mission01 extends Game {
         return "Mission Objective: Sink at least three enemy ships.";
     }
     
+    private Ship player;
     private List<Ship> enemies = new ArrayList<Ship>();
     
     @Override
@@ -32,11 +27,10 @@ public class Mission01 extends Game {
         Class<? extends Ship> enemyClass = games.DummyShip.class;
         
         Arena arena = new Arena(10, 10);
-        this.setSeed(arena, 42);
         
         try {
             int[] playerSpawn = {5, 5};
-            Ship player = playerClass.newInstance();
+            player = playerClass.newInstance();
             this.spawnShip(arena, playerSpawn[0], playerSpawn[1], player);
         
             int[][] enemySpawns = {
@@ -91,7 +85,7 @@ public class Mission01 extends Game {
 
     @Override
     public void run() {
-        this.runMission(getArena(), MAX_TURNS, DEBUG_MODE, ARENA_FILE, DEBUG_FILE);
+        this.runMission(getArena());
     }
    
 }

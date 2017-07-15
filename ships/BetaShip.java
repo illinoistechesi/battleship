@@ -1,4 +1,5 @@
 package ships;
+import core.*;
 
 // BetaShip will be design as a speedy/scouting ship
 public class BetaShip extends Ship {

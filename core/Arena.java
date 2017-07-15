@@ -28,6 +28,7 @@ public class Arena {
                     if (target.isSunk()) {
                         getGrid().set(x, y, null);
                         target.recordSinking(source);
+                        actions.add(new Action(target, getTurn(), source));
                         detail += "sunk ship!";
                     } else {
                         detail += "hit ship, hull strength remaining: ";

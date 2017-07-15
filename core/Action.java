@@ -11,6 +11,7 @@ public class Action {
     private String direction;
     private int atX;
     private int atY;
+    private String attacker;
     
     public Action(Ship ship, int turn, Direction dir) {
         this.type = "MOVE";
@@ -20,6 +21,16 @@ public class Action {
         this.x = ship.getCoord().getX();
         this.y = ship.getCoord().getY();
         this.health = ship.getHealth();
+    }
+    
+    public Action(Ship target, int turn, Ship attacker) {
+        this.type = "SINK";
+        this.turn = turn;
+        this.id = target + "";
+        this.x = target.getCoord().getX();
+        this.y = target.getCoord().getY();
+        this.health = target.getHealth();
+        this.attacker = attacker + "";
     }
     
     public Action(Ship ship, int turn, int x, int y) {
@@ -67,6 +78,10 @@ public class Action {
     
     public int getAtY() {
         return this.atY;
+    }
+    
+    public String getAttacker() {
+        return this.attacker;
     }
     
 }

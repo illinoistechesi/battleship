@@ -51,7 +51,6 @@ public class DeltaShip extends Ship {
         }
         if (target != null) {
             Coord coord = this.getShipCoord(arena, target);
-            Coord self = this.getSelfCoord();
             for (int f = 0; f < this.getFirepower(); f++) {
                 arena.fire(this, coord.getX(), coord.getY());
             }

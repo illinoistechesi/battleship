@@ -6,15 +6,15 @@ import java.util.List;
  * Custom Ship
  * @author Your Name
  */
-public class CustomShip extends Ship {
+public class NickShip extends Ship {
     
-    public CustomShip() {
+    public NickShip() {
         this.initializeName("Custom Ship");
         this.initializeOwner("Your Name");
         this.initializeHull(1);
         this.initializeFirepower(1);
         this.initializeSpeed(2);
-        this.initializeRange(1);
+        this.initializeRange(2);
     }
     
     /*
@@ -25,15 +25,34 @@ public class CustomShip extends Ship {
     @Override
     public void doTurn(Arena arena) {
         // Fill in your strategy here
-        int goalX = 1;
+        int goalX = 4;
         int goalY = 1;
+        // our goal ^above is (4, 1)
+        // our starting location is (5, 5)
         
         Coord shipLocation = this.getSelfCoord(arena);
         int shipX = shipLocation.getX();
         int shipY = shipLocation.getY();
         
-        arena.move(this, Direction.WEST); // 
-        arena.move(this, Direction.NORTH); //
+        // current x location GREATER than goal's X location
+        if (shipX > goalX) {
+            arena.move(this, Direction.WEST);
+        }
+        // current x location LESS than goal's X location
+        else if (shipX < goalX) {
+            arena.move(this, Direction.EAST);
+        }
+        // current y location GREATER than goal's Y location
+        else if (shipY > goalY) {
+            arena.move(this, Direction.NORTH);
+        }
+        else if (shipY < goalY) {
+            arena.move(this, Direction.SOUTH);
+        }
+        else {
+            arena.fire(this, 3, 1);
+        }
+        
         
         
         // arena.move(this, Direction.SOUTH);

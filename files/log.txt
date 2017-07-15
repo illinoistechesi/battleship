@@ -1,13 +1,208 @@
 Turn 0
+- Fired at (2, 1), hit ship, hull strength remaining: 6
+- Fired at (2, 1), hit ship, hull strength remaining: 5
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
 Turn 1
+- Fired at (2, 1), hit ship, hull strength remaining: 4
+- Fired at (2, 1), hit ship, hull strength remaining: 3
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
 Turn 2
+- Fired at (2, 1), hit ship, hull strength remaining: 2
+- Fired at (2, 1), hit ship, hull strength remaining: 1
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
 Turn 3
+- Fired at (2, 1), sunk ship!
+- Fired at (2, 1), could not find a target.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
 Turn 4
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
 Turn 5
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
 Turn 6
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
 Turn 7
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
 Turn 8
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
 Turn 9
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
 Turn 10
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
 Turn 11
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
 Turn 12
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 13
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 14
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 15
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 16
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 17
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 18
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 19
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 20
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 21
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 22
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 23
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 24
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 25
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 26
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 27
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 28
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 29
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 30
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 31
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 32
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 33
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 34
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 35
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 36
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 37
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 38
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 39
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 40
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 41
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 42
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 43
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 44
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 45
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 46
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 47
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 48
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+Turn 49
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.
+- Moved North, reached edge of the map.

@@ -14,17 +14,12 @@ Rename it to be `YourLastNameShip.java` (ex `HerreraShip.java`).
 
 You will also need to change lines 6, 9, 11, and 12 to your new ship class name.
 
-Then, open the `/games/Mission01.java` file and, in line 10, change DeltaShip to your ship class name.
-
 Navigate to the `/battleship` folder. Then you can compile and run the game like this:
 ```
 $ javac games/*.java
-$ java games.Mission01
+$ java games.MissionRunner 1 ships.YourLastNameShip
 ```
 
-Maps of the game play over time will print to `/files/arena.txt`.
+The first argument after `games.MissionRunner` is the number of the mission you want to attempt. The second argument is the full class name of the ship you want to play as.
 
-If you run the game with the "descriptive" flag `-d`, then it will print your ships moves to `/files/log.txt`.
-```
-$ java games.Mission01 -d
-```
+Maps of the game play over time will print to `/files/arena.txt`. Your ship's moves will print to `/files/log.txt`.

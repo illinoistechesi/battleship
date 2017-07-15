@@ -5,15 +5,16 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Mission01 extends Game {
+public class Mission02 extends Game {
     
     public static Class<? extends Ship> PLAYER_CLASS = games.DummyShip.class;
+    
     public static final int MAX_TURNS = 50;
     public static boolean DEBUG_MODE = true;
     public static final String ARENA_FILE = "files/arena.txt";
     public static String DEBUG_FILE = "files/log.txt";
     
-    public Mission01(Class<? extends Ship> c) {
+    public Mission02(Class<? extends Ship> c) {
         PLAYER_CLASS = c;
         Arena arena = initializeArena();
         run(arena);
@@ -22,9 +23,10 @@ public class Mission01 extends Game {
     
     @Override
     public String getObjective() {
-        return "Mission Objective: Sink at least three enemy ships.";
+        return "Mission Objective: Reach the end of a narrow straight.";
     }
     
+    private Ship player;
     private List<Ship> enemies = new ArrayList<Ship>();
     
     @Override
@@ -32,19 +34,19 @@ public class Mission01 extends Game {
         Class<? extends Ship> playerClass = PLAYER_CLASS;
         Class<? extends Ship> enemyClass = games.DummyShip.class;
         
-        Arena arena = new Arena(10, 10);
+        Arena arena = new Arena(10, 2);
         this.setSeed(arena, 42);
         
         try {
-            int[] playerSpawn = {5, 5};
-            Ship player = playerClass.newInstance();
+            int[] playerSpawn = {0, 0};
+            this.player = playerClass.newInstance();
             this.spawnShip(arena, playerSpawn[0], playerSpawn[1], player);
         
             int[][] enemySpawns = {
                 {4, 0},
-                {5, 0},
-                {3, 1},
-                {6, 1}
+                {6, 0},
+                {2, 1},
+                {8, 1}
             };
             for (int n = 0; n < enemySpawns.length; n++) {
                 int[] enemySpawn = enemySpawns[n];
@@ -63,31 +65,17 @@ public class Mission01 extends Game {
     
     @Override
     public boolean isCompleted(Arena gameArena) {
-        int enemiesSunk = 0;
-        for (Ship enemyShip : enemies) {
-            if (enemyShip.isSunk()) {
-                enemiesSunk++;
-            }
+        boolean success = false;
+        Coord coord = this.getShipCoord(player);
+        if (coord.getX() == 9) {
+            success = true;
         }
-        return enemiesSunk >= 3;
+        return success;
     }
     
     @Override
     public String getResults(Arena arena) {
-        int enemiesSunk = 0;
-        List<Ship> sunk = new ArrayList<Ship>();
-        for (Ship enemyShip : enemies) {
-            if (enemyShip.isSunk()) {
-                sunk.add(enemyShip);
-                enemiesSunk++;
-            }
-        }
-        String res = "Sunk " + enemiesSunk + " enemy ships.";
-        for (Ship ship : sunk) {
-            res += "\n";
-            res += "- Sunk " + ship + " at " + getShipCoord(ship) + ".";
-        }
-        return res;
+        return "No additional details to report.";
     }
 
     @Override

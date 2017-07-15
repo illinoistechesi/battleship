@@ -28,6 +28,7 @@ public class BetaShip extends Ship {
     /* Accessible Information
     
         Arena
+            // commonly used
             public void move(Ship self, Direction dir)
             
             public void fire(Ship self, int x, int y) 
@@ -51,9 +52,10 @@ public class BetaShip extends Ship {
             public int getSpeed()
             public int getRange()
             
-            Coord getShipCoord(Arena arena, Ship target)
-
+            // Commonly used
             Coord getSelfCoord(Arena arena)
+            
+            Coord getShipCoord(Arena arena, Ship target)
             
         Direction
             NORTH, SOUTH, WEST, EAST

@@ -18,6 +18,7 @@ public class Arena {
     }
     
     public void fire(Ship source, int x, int y) {
+        actions.add(new Action(source, getTurn(), x, y));
         String detail = "- Fired at (" + x + ", " + y + "), ";
         if (source.getRemainingShots() > 0) {
             Ship target = getGrid().get(x, y);
@@ -46,7 +47,6 @@ public class Arena {
         if (inDebugMode()) {
             Helper.writeFileLine(DEBUG_FILE, detail);
         }
-        actions.add(new Action(source, getTurn(), x, y));
     }
     
     /**

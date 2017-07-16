@@ -31,10 +31,12 @@ public class Battle extends Game {
     @Override
     public Arena initializeArena() {
         
+        int n =getCombatants().size();
+        int wrap = 3;
         int padding = 2;
         int margin = 1 + (2 * padding);
-        int xSize = getCombatants().size() * margin;
-        int ySize = margin;
+        int xSize = wrap * margin;
+        int ySize = (int) Math.ceil((double) n / (double) wrap) * margin;
         Arena arena = new Arena(xSize, ySize);
         setArena(arena);
         setSeed(getStarterSeed());
@@ -56,8 +58,9 @@ public class Battle extends Game {
                         }
                         break;
                     case ZONE_SPAWN:
-                        int center = (count * margin) + padding;
-                        spawnShip(arena, center, padding, player);
+                        int xZone = ((count % wrap) * margin) + padding;
+                        int yZone = ((int) Math.floor((double) count / (double) wrap) * margin) + padding;
+                        spawnShip(arena, xZone, yZone, player);
                         count++;
                         break;
                 }

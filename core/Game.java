@@ -1,4 +1,4 @@
-package core;
+package battleship.core;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -123,7 +123,11 @@ public abstract class Game {
             for (Ship ship : ships) {
                 Helper.writeFileLine(debugFile, ship + "");
                 this.initializeTurn(ship);
-                ship.doTurn(arena);
+                try {
+                    ship.doTurn(arena);
+                } catch (Exception e) {
+                    // Squash problems with the doTurn function
+                }
             }
             Helper.writeFileLine(arenaFile, "After T = " + t);
             Helper.writeFileLine(arenaFile, getArenaAsText(arena));

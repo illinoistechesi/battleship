@@ -1,11 +1,11 @@
-package games;
-import core.*;
-import ships.*;
+package battleship.games;
+import battleship.core.*;
+import battleship.ships.*;
 import java.util.*;
 
 public class Mission01 extends Game {
     
-    public Class<? extends Ship> PLAYER_CLASS = games.DummyShip.class;
+    public Class<? extends Ship> PLAYER_CLASS = battleship.ships.DummyShip.class;
     
     public Mission01(Class<? extends Ship> c) {
         PLAYER_CLASS = c;
@@ -24,7 +24,7 @@ public class Mission01 extends Game {
     @Override
     public Arena initializeArena() {
         Class<? extends Ship> playerClass = PLAYER_CLASS;
-        Class<? extends Ship> enemyClass = games.DummyShip.class;
+        Class<? extends Ship> enemyClass = battleship.ships.DummyShip.class;
         
         Arena arena = new Arena(10, 10);
         

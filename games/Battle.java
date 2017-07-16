@@ -1,46 +1,26 @@
-package games;
-import core.*;
-import ships.*;
+package battleship.games;
+import battleship.core.*;
+import battleship.ships.*;
 import java.util.*;
 
 public class Battle extends Game {
-    
-    private List<Class<? extends Ship>> combatants = new ArrayList<Class<? extends Ship>>();
-    public static int SEED = 42;
-    public static Mode MODE = Mode.ZONE_SPAWN;
-    
-    public static void main(String[] args) {
-        if (args.length >= 1) {
-            switch (args[0]) {
-                case "random":
-                    MODE = Mode.RANDOM_SPAWN;
-                    break;
-                case "zone":
-                    MODE = Mode.ZONE_SPAWN;
-                    break;
-            }
-        }
-        if (args.length >= 2) {
-            SEED = Integer.parseInt(args[1]);
-        }
-        Game battle = new Battle();
-        battle.setMaxTurns(100);
-        battle.setArenaFile("files/battle-arena.txt");
-        battle.setTurnFile("files/battle-turns.txt");
-        battle.run();
-    }
     
     public enum Mode {
         RANDOM_SPAWN,
         ZONE_SPAWN
     }
     
-    public Battle() {
-        combatants.add(ships.CustomShip.class);
-        combatants.add(games.DummyShip.class);
-        combatants.add(ships.CustomShip.class);
+    private List<Class<? extends Ship>> combatants;
+    private Mode mode = Mode.ZONE_SPAWN;
+    private int starterSeed = 0;
+    
+    public Battle(List<Class<? extends Ship>> combatants, int seed, Mode mode) {
+        this.mode = mode;
+        this.starterSeed = seed;
+        this.combatants = combatants;
         Arena arena = initializeArena();
         setArena(arena);
+        this.setSeed(seed);
     }
     
     @Override
@@ -57,14 +37,14 @@ public class Battle extends Game {
         int ySize = margin;
         Arena arena = new Arena(xSize, ySize);
         setArena(arena);
-        setSeed(SEED);
+        setSeed(getStarterSeed());
         
         try {
             
             int count = 0;
             for (Class<? extends Ship> shipClass : getCombatants()) {
                 Ship player = shipClass.newInstance();
-                switch (MODE) {
+                switch (getMode()) {
                     case RANDOM_SPAWN:
                         int x = 0;
                         int y = 0;
@@ -121,6 +101,14 @@ public class Battle extends Game {
     
     public List<Class<? extends Ship>> getCombatants() {
         return this.combatants;
+    }
+    
+    public Mode getMode() {
+        return this.mode;
+    }
+    
+    public int getStarterSeed() {
+        return this.starterSeed;
     }
    
 }

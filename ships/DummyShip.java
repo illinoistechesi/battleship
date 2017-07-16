@@ -1,5 +1,5 @@
-package games;
-import core.*;
+package battleship.ships;
+import battleship.core.*;
 import java.util.List;
 
 /*

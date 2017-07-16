@@ -1,4 +1,4 @@
-package core;
+package battleship.core;
 import java.util.List;
 import java.util.ArrayList;
 

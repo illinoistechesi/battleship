@@ -1,4 +1,4 @@
-package core;
+package battleship.core;
 
 public enum Direction {
     

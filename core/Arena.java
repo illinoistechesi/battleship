@@ -191,6 +191,11 @@ public class Arena {
         this.turn++;    
     }
     
+    /**
+     * Get the number of the current game turn
+     * @param void
+     * @return int the number of the current turn
+     */
     public int getTurn() {
         return this.turn;
     }

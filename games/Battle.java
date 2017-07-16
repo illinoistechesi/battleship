@@ -31,11 +31,11 @@ public class Battle extends Game {
     @Override
     public Arena initializeArena() {
         
-        int n =getCombatants().size();
+        int n = getCombatants().size();
         int wrap = 3;
         int padding = 2;
         int margin = 1 + (2 * padding);
-        int xSize = wrap * margin;
+        int xSize = n >= wrap ? wrap * margin : n * margin;
         int ySize = (int) Math.ceil((double) n / (double) wrap) * margin;
         Arena arena = new Arena(xSize, ySize);
         setArena(arena);

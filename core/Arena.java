@@ -143,6 +143,14 @@ public class Arena {
         return self.getCoord();
     }
     
+    public int getXSize() {
+        return this.getGrid().getXSize():
+    }
+    
+    public int getYSize() {
+        return this.getGrid().getYSize():
+    }
+    
     private String DEBUG_FILE = null;
     private boolean debugMode = false;
     
@@ -168,7 +176,7 @@ public class Arena {
     }
     
     public int countEnemies(Ship source) {
-        return 0;
+        return getAllShips().size();
     }
     
     public int countAllies(Ship source) {

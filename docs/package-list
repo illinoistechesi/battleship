@@ -1,4 +1,3 @@
-core
-games
-server
-ships
+battleship.core
+battleship.games
+battleship.ships

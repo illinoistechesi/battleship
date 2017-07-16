@@ -144,11 +144,11 @@ public class Arena {
     }
     
     public int getXSize() {
-        return this.getGrid().getXSize():
+        return this.getGrid().getXSize();
     }
     
     public int getYSize() {
-        return this.getGrid().getYSize():
+        return this.getGrid().getYSize();
     }
     
     private String DEBUG_FILE = null;

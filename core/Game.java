@@ -121,12 +121,14 @@ public abstract class Game {
             //}
             List<Ship> ships = this.sortShipsByPriority(arena);
             for (Ship ship : ships) {
-                Helper.writeFileLine(debugFile, ship + "");
-                this.initializeTurn(ship);
-                try {
-                    ship.doTurn(arena);
-                } catch (Exception e) {
-                    // Squash problems with the doTurn function
+                if (!ship.isSunk()) {
+                    Helper.writeFileLine(debugFile, ship + "");
+                    this.initializeTurn(ship);
+                    try {
+                        ship.doTurn(arena);
+                    } catch (Exception e) {
+                        // Squash problems with the doTurn function
+                    }
                 }
             }
             Helper.writeFileLine(arenaFile, "After T = " + t);

@@ -246,6 +246,10 @@ public class Arena {
         this.getRandom().setSeed(seed);
     }
     
+    protected List<Action> getActions() {
+        return this.actions;
+    }
+    
     protected Grid<Ship> getGrid() {
         return this.grid;
     }

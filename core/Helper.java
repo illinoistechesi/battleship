@@ -140,6 +140,7 @@ public class Helper {
         
     }
     
+    private static boolean addedShutdownHook = false;
     private static boolean allowWrites = true;
     private static HashMap<String, FileRecord> fileMap = new HashMap<String, FileRecord>();
     
@@ -153,6 +154,15 @@ public class Helper {
                rec.openForWriting(); 
             }
             rec.writeFileLine(content);
+        }
+        if (!Helper.addedShutdownHook) {
+            Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+                public void run() {
+                    //System.out.println("JVM shutting down, closing files.");
+                    Helper.closeAllFiles();
+                }
+            }));
+            Helper.addedShutdownHook = true;
         }
     }
     
@@ -184,6 +194,7 @@ public class Helper {
         for(Map.Entry<String, FileRecord> entry : fileMap.entrySet()){
             entry.getValue().closeFile();
         }
+        fileMap.clear();
     }
 
     public static void disableWrites(){

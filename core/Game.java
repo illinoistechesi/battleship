@@ -64,10 +64,23 @@ public abstract class Game {
         return arena.getAllSpawnedShips();
     }
     
+    public List<Action> getActions(Arena arena) {
+        return arena.getActions();
+    }
+    
+    private boolean verbose = true;
     private int maxTurns = 50;
     private boolean debugMode = true;
     private String arenaFile = "./files/game-arena.txt";
     private String turnFile = "./files/game-turns.txt";
+    
+    public boolean isVerbose() {
+        return this.verbose;
+    }
+    
+    public void setVerbose(boolean verbose) {
+        this.verbose = verbose;
+    }
     
     public int getMaxTurns() {
         return this.maxTurns;
@@ -101,23 +114,35 @@ public abstract class Game {
         this.turnFile = turnFile;
     }
     
+    public void println(String content) {
+        if (this.isVerbose()) {
+            System.out.println(content);
+        }
+    }
+    
+    public void print(String content) {
+        if (this.isVerbose()) {
+            System.out.print(content);
+        }
+    }
+    
     public void runMission(Arena arena) {
         int maxTurns = this.getMaxTurns();
         boolean debugMode = this.getDebugMode();
         String arenaFile = this.getArenaFile();
         String debugFile = this.getTurnFile();
-        System.out.print("\n");
-        System.out.println(this.getObjective());
+        this.print("\n");
+        this.println(this.getObjective());
         Helper.writeFileLine(arenaFile, "Initial Map");
         Helper.writeFileLine(arenaFile, getArenaAsText(arena));
-        System.out.println("\n" + getArenaAsText(arena));
+        this.println("\n" + getArenaAsText(arena));
         arena.setDebugMode(debugMode, debugFile);
         boolean success = false;
         int t = 0;
         while (t < maxTurns) {
             Helper.writeFileLine(debugFile, "Turn " + t);
             //if (t % 10 == 0) {
-                System.out.print("\rTurn " + t);
+                this.print("\rTurn " + t);
             //}
             List<Ship> ships = this.sortShipsByPriority(arena);
             for (Ship ship : ships) {
@@ -141,16 +166,15 @@ public abstract class Game {
                 arena.nextTurn();
             }
         }
-        System.out.print("\r");
+        this.print("\r");
         if (!success) {
-            System.out.println("Game expired after " + t + " turns.");
+            this.println("Game expired after " + t + " turns.");
         } else {
-            System.out.println("Game completed after " + t + " turns.");
+            this.println("Game completed after " + t + " turns.");
         }
-        System.out.print("\n");
-        System.out.println(this.getResults());
-        System.out.print("\n");
-        Helper.closeAllFiles();
+        this.print("\n");
+        this.println(this.getResults());
+        this.print("\n");
     }
     
 }

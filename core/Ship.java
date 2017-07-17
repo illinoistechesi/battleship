@@ -31,16 +31,16 @@ public abstract class Ship {
      */
     public abstract void doTurn(Arena arena);
     
-    protected final void initializeTurn() {
+    final void initializeTurn() {
         this.moves = this.getSpeed();
         this.shots = this.getFirepower();
     }
     
-    protected final void setCoord(int x, int y) {
+    final void setCoord(int x, int y) {
         this.coord = new Coord(x, y);
     }
     
-    protected final void sustainHit() {
+    final void sustainHit() {
         this.health--;
         //System.out.println(this);
         //System.out.println("I was hit!");
@@ -76,7 +76,6 @@ public abstract class Ship {
         return Math.min(pointsRemaining, amount);
     }
     
-    // Change to private?
     final void recordSinking(Ship attacker) {
         this.sunkBy = attacker;
         this.sunkAt = this.getCoord();

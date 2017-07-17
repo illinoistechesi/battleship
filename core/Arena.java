@@ -11,7 +11,7 @@ public class Arena {
     private List<Ship> ships = new ArrayList<Ship>();
     private Grid<Ship> grid;
     private Random random = new Random();
-    public List<Action> actions = new ArrayList<Action>();
+    private List<Action> actions = new ArrayList<Action>();
     
     public Arena(int xSize, int ySize) {
         this.grid = new Grid<Ship>(xSize, ySize);
@@ -164,7 +164,7 @@ public class Arena {
     //**** TO BE IMPLEMENTED LATER ****//
     //*********************************//
     
-    public List<Ship> getNearbyAllies(Ship source) {
+    /*public List<Ship> getNearbyAllies(Ship source) {
         return new ArrayList<Ship>();
     }
     
@@ -178,7 +178,7 @@ public class Arena {
     
     public int countAllies(Ship source) {
         return 0;
-    }
+    }*/
     
     public Random getRandom() {
         return this.random;
@@ -195,6 +195,10 @@ public class Arena {
      */
     public int getTurn() {
         return this.turn;
+    }
+    
+    public int countLiveShips() {
+        return this.getAllShips().size();
     }
     
     //***************************************************//

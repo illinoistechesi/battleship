@@ -1,25 +1,131 @@
 # Battleship
 
-## Instructions
+## Getting Started
+The entire setup guide is [here](https://illinoistechesi/github.io/battleshipsetup).
 
-First, download the code:
-```
-$ git clone https://github.com/illinoistechesi/battleship.git
-$ cd battleship
-```
+## API
+These are the functions you can use when developing your own ships.
 
-Then, in the sidebar of Cloud9, find the `/ships/CustomShip.java` file and copy it in the same folder.
+# Ship Class
 
-Rename it to be `YourLastNameShip.java` (ex `HerreraShip.java`).
+## doTurn()
+Determines what a ship does on each turn.
+- Returns: void
 
-You will also need to change lines 6, 9, 11, and 12 to your new ship class name.
+## move()
+...
+- Returns: ...
 
-Navigate to the `/battleship` folder. Then you can compile and run the game like this:
-```
-$ javac games/*.java
-$ java games.MissionRunner 1 ships.YourLastNameShip
-```
+## fire()
+...
+- Returns: ...
 
-The first argument after `games.MissionRunner` is the number of the mission you want to attempt. The second argument is the full class name of the ship you want to play as.
+## getRemainingMoves()
+...
+- Returns: ...
 
-Maps of the game play over time will print to `/files/arena.txt`. Your ship's moves will print to `/files/log.txt`.
+## getRemainingShots()
+...
+- Returns: ...
+
+## isSunk()
+...
+- Returns: ...
+
+## getCoord()
+...
+- Returns: ...
+
+## getShipCoord(Arena arena, Ship ship)
+...
+- Returns: ...
+
+## getNearbyShips(Arena arena)
+...
+- Returns: ...
+
+## getName()
+...
+- Returns: ...
+
+## getOwner()
+...
+- Returns: ...
+
+## getHealth()
+...
+- Returns: ...
+
+## getHull()
+...
+- Returns: ...
+
+## getFirepower()
+...
+- Returns: ...
+
+## getSpeed()
+...
+- Returns: ...
+
+## getRange()
+...
+- Returns: ...
+
+# Creating Your Ship
+
+## initializeName()
+...
+- Returns: ...
+
+## initializeOwner()
+...
+- Returns: ...
+
+## initializeHull()
+...
+- Returns: ...
+
+## initializeFirepower()
+...
+- Returns: ...
+
+## initializeSpeed()
+...
+- Returns: ...
+
+## initializeRange()
+...
+- Returns: ...
+
+# Arena Class
+
+## isInRange(Ship a, Ship b)
+Determines if ship b is within the range of ship a.
+- Ship a: ship to check range from
+- Ship b: ship to check for
+- Returns: boolean
+
+## getXSize()
+Get horizontal size of arena.
+- Returns: int
+
+## getYSize()
+Get vertical size of arena.
+- Returns: int
+
+## getTurn()
+Get the number of this turn.
+- Returns: int
+
+## countLiveShips()
+Get the number of ships that are currently alive in the arena.
+- Returns: int
+
+## getRandom()
+Get the random object for the arena. Use this object for any randomness.
+- Returns: Random
+
+
+
+

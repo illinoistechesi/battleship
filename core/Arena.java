@@ -17,7 +17,7 @@ public class Arena {
         this.grid = new Grid<Ship>(xSize, ySize);
     }
     
-    public void fire(Ship source, int x, int y) {
+    protected void fire(Ship source, int x, int y) {
         actions.add(new Action(source, getTurn(), x, y));
         String detail = "- Fired at (" + x + ", " + y + "), ";
         if (source.getRemainingShots() > 0) {
@@ -54,7 +54,7 @@ public class Arena {
      * @param Ship Object that is moving
      * @param Direction 
      */
-    public void move(Ship source, Direction dir) {
+    protected void move(Ship source, Direction dir) {
         String detail = "- Moved " + dir + ", ";
         if (source.getRemainingMoves() > 0) {
             int x = source.getCoord().getX();
@@ -102,7 +102,8 @@ public class Arena {
      * @param Ship object to reference when looking for nearby enemy ships
      * @return List<Ship> list of enemy ships
      */
-    public List<Ship> getNearbyEnemies(Ship source) {
+    //protected List<Ship> getNearbyEnemies(Ship source) {
+    protected List<Ship> getNearbyShips(Ship source) {
         List<Ship> res = new ArrayList<Ship>();
         int range = source.getRange();
         int xPos = source.getCoord().getX();
@@ -137,10 +138,6 @@ public class Arena {
             res = target.getCoord();
         }
         return res;
-    }
-    
-    public Coord getShipCoord(Ship self) {
-        return self.getCoord();
     }
     
     public int getXSize() {

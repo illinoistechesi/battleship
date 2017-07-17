@@ -1,6 +1,8 @@
 package battleship.core;
 import java.util.List;
 import java.util.ArrayList;
+import java.io.StringWriter;
+import java.io.PrintWriter;
 
 public abstract class Game {
     
@@ -73,6 +75,7 @@ public abstract class Game {
     private boolean debugMode = true;
     private String arenaFile = "./files/game-arena.txt";
     private String turnFile = "./files/game-turns.txt";
+    private String logFile = "./files/game-log.txt";
     
     public boolean isVerbose() {
         return this.verbose;
@@ -98,6 +101,10 @@ public abstract class Game {
         return this.turnFile;
     }
     
+    public String getLogFile() {
+        return this.logFile;
+    }
+    
     public void setMaxTurns(int maxTurns) {
         this.maxTurns = maxTurns;
     }
@@ -114,6 +121,10 @@ public abstract class Game {
         this.turnFile = turnFile;
     }
     
+    public void setLogFile(String logFile) {
+        this.logFile = logFile;
+    }
+    
     public void println(String content) {
         if (this.isVerbose()) {
             System.out.println(content);
@@ -127,10 +138,12 @@ public abstract class Game {
     }
     
     public void runMission(Arena arena) {
+        boolean hadAnyProblems = false;
         int maxTurns = this.getMaxTurns();
         boolean debugMode = this.getDebugMode();
         String arenaFile = this.getArenaFile();
         String debugFile = this.getTurnFile();
+        String logFile = this.getLogFile();
         this.print("\n");
         this.println(this.getObjective());
         Helper.writeFileLine(arenaFile, "Initial Map");
@@ -142,7 +155,7 @@ public abstract class Game {
         while (t < maxTurns) {
             Helper.writeFileLine(debugFile, "Turn " + t);
             //if (t % 10 == 0) {
-                this.print("\rTurn " + t);
+                this.print("\rTurn " + t + "\t\t");
             //}
             List<Ship> ships = this.sortShipsByPriority(arena);
             for (Ship ship : ships) {
@@ -152,6 +165,14 @@ public abstract class Game {
                     try {
                         ship.doTurn(arena);
                     } catch (Exception e) {
+                        StringWriter sw = new StringWriter();
+                        e.printStackTrace(new PrintWriter(sw));
+                        String exceptionAsString = sw.toString();
+                        String err = "Exception on Turn " + t + ", caused by " + ship + ":\n";
+                        err += exceptionAsString;
+                        err += "\n";
+                        Helper.writeFileLine(logFile, err);
+                        hadAnyProblems = true;
                         // Squash problems with the doTurn function
                     }
                 }
@@ -171,6 +192,10 @@ public abstract class Game {
             this.println("Game expired after " + t + " turns.");
         } else {
             this.println("Game completed after " + t + " turns.");
+        }
+        if (hadAnyProblems) {
+            this.println("There were exceptions in at least one ship class.");
+            this.println("View " + logFile + " for details.");
         }
         this.print("\n");
         this.println(this.getResults());

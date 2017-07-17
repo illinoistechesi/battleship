@@ -1,4 +1,5 @@
 package battleship.core;
+import java.util.List;
 
 public abstract class Ship {
     
@@ -25,6 +26,9 @@ public abstract class Ship {
         
     }
     
+    /**
+     * Classes extending this will need to implement this method to program their ship behavior
+     */
     public abstract void doTurn(Arena arena);
     
     protected final void initializeTurn() {
@@ -42,19 +46,27 @@ public abstract class Ship {
         //System.out.println("I was hit!");
     }
     
+    /**
+     * Moves based on a ships speed property, if remain moves are used up, future moves will be voided until the start of the next turn
+     * @return int The remain points left for ship movement
+     */
     public final int getRemainingMoves() {
         return this.moves;
     }
     
+    /**
+     * Number of shots are based on a ships firepower property, if remain shots are used up, future shots will be voided until the start of the next turn
+     * @return int The remain points left for ship to fire
+     */
     public final int getRemainingShots() {
         return this.shots;
     }
     
-    protected final void useMove() {
+    final void useMove() {
         this.moves--;
     }
     
-    protected final void useShot() {
+    final void useShot() {
         this.shots--;
     }
     
@@ -64,11 +76,8 @@ public abstract class Ship {
         return Math.min(pointsRemaining, amount);
     }
     
-    /**
-     * This method will not be used directly outside of the API
-     * @param Ship Takes a ship object that sunk the current ship
-     */
-    protected final void recordSinking(Ship attacker) {
+    // Change to private?
+    final void recordSinking(Ship attacker) {
         this.sunkBy = attacker;
         this.sunkAt = this.getCoord();
     }
@@ -119,10 +128,6 @@ public abstract class Ship {
     public final void initializeRange(int range) {
         this.range = withdrawPoints(range);
     }
-    
-
-    
-
     
     //************************//
     //**** Derived Values ****//
@@ -178,8 +183,20 @@ public abstract class Ship {
         return arena.getShipCoord(this, ship);
     }
     
-    protected final Coord getSelfCoord(Arena arena) {
+    /*protected final Coord getSelfCoord(Arena arena) {
         return arena.getShipCoord(this, this);
+    }*/
+    
+    protected final void move(Arena arena, Direction direction) {
+        arena.move(this, direction);
+    }
+    
+    protected final void fire(Arena arena, int x, int y) {
+        arena.fire(this, x, y);
+    }
+    
+    protected final List<Ship> getNearbyShips(Arena arena) {
+        return arena.getNearbyShips(this);
     }
     
     /**

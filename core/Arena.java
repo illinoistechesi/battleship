@@ -11,13 +11,13 @@ public class Arena {
     private List<Ship> ships = new ArrayList<Ship>();
     private Grid<Ship> grid;
     private Random random = new Random();
-    public List<Action> actions = new ArrayList<Action>();
+    private List<Action> actions = new ArrayList<Action>();
     
     public Arena(int xSize, int ySize) {
         this.grid = new Grid<Ship>(xSize, ySize);
     }
     
-    public void fire(Ship source, int x, int y) {
+    protected void fire(Ship source, int x, int y) {
         actions.add(new Action(source, getTurn(), x, y));
         String detail = "- Fired at (" + x + ", " + y + "), ";
         if (source.getRemainingShots() > 0) {
@@ -54,7 +54,7 @@ public class Arena {
      * @param Ship Object that is moving
      * @param Direction 
      */
-    public void move(Ship source, Direction dir) {
+    protected void move(Ship source, Direction dir) {
         String detail = "- Moved " + dir + ", ";
         if (source.getRemainingMoves() > 0) {
             int x = source.getCoord().getX();
@@ -102,7 +102,8 @@ public class Arena {
      * @param Ship object to reference when looking for nearby enemy ships
      * @return List<Ship> list of enemy ships
      */
-    public List<Ship> getNearbyEnemies(Ship source) {
+    //protected List<Ship> getNearbyEnemies(Ship source) {
+    protected List<Ship> getNearbyShips(Ship source) {
         List<Ship> res = new ArrayList<Ship>();
         int range = source.getRange();
         int xPos = source.getCoord().getX();
@@ -139,10 +140,6 @@ public class Arena {
         return res;
     }
     
-    public Coord getShipCoord(Ship self) {
-        return self.getCoord();
-    }
-    
     public int getXSize() {
         return this.getGrid().getXSize();
     }
@@ -167,7 +164,7 @@ public class Arena {
     //**** TO BE IMPLEMENTED LATER ****//
     //*********************************//
     
-    public List<Ship> getNearbyAllies(Ship source) {
+    /*public List<Ship> getNearbyAllies(Ship source) {
         return new ArrayList<Ship>();
     }
     
@@ -181,7 +178,7 @@ public class Arena {
     
     public int countAllies(Ship source) {
         return 0;
-    }
+    }*/
     
     public Random getRandom() {
         return this.random;
@@ -198,6 +195,10 @@ public class Arena {
      */
     public int getTurn() {
         return this.turn;
+    }
+    
+    public int countLiveShips() {
+        return this.getAllShips().size();
     }
     
     //***************************************************//

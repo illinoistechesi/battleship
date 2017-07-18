@@ -217,7 +217,7 @@ public class Arena {
         return success;
     }
     
-    protected List<Ship> getAllShips() {
+    public List<Ship> getAllShips() {
         List<Ship> res = new ArrayList<Ship>();
         for (Ship ship : getGrid().getAll()) {
             if (ship != null) {
@@ -229,7 +229,7 @@ public class Arena {
         return res;
     }
     
-    protected List<Ship> getAllSpawnedShips() {
+    public List<Ship> getAllSpawnedShips() {
         return this.ships;
     }
     

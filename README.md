@@ -68,20 +68,9 @@ Fire at given coordinates if remaining shots available.
 - int y: y coordinate to fire at
 - Returns: void
 
-### getCoord()
-Get the coordinate of your ship, check out the Coord class for more information.
-- Returns: Coord
-
-**Example of getting x and y from Coord object**
-```
-Coord coord = this.getCoord():
-int x = coord.getX();
-int y = coord.getY();
-System.out.println("My ship is at (" + x + ", " + y + ").");
-```
-
 ### getShipCoord(Arena arena, Ship ship)
 Get the coordinates of another ship if it is within the range of your ship.
+- **Note:** You do not have to use this method because you can now get the coordinates of any ship, even if it is outside the range of your ship.
 - Ship ship: another ship
 - Returns: Coord
 
@@ -114,6 +103,19 @@ System.out.println("There are " + count + " ships near me.");
 ```
 
 ## Methods that can be used on any ship
+
+### getCoord()
+Get the coordinate of your ship, check out the Coord class for more information.
+- **Note:** You can now get the coordinates of any ship, even if it is outside the range of your ship.
+- Returns: Coord
+
+**Example of getting x and y from Coord object**
+```
+Coord coord = this.getCoord():
+int x = coord.getX();
+int y = coord.getY();
+System.out.println("My ship is at (" + x + ", " + y + ").");
+```
 
 ### getRemainingMoves()
 Get the number of moves a ship has left on this turn.
@@ -175,6 +177,14 @@ System.out.println("Enemy has taken " + hitsTaken + " hits.");
 ```
 
 ## Arena Class
+
+### getAllShips()
+Returns a list of ships in the arena that have not yet sunk.
+- Returns: List<Ship>
+
+### getAllSpawnedShips()
+Returns a list of ships, whether or not they have sunk.
+- Returns: List<Ship>
 
 ### isInRange(Ship a, Ship b)
 Determines if ship b is within the range of ship a.

@@ -174,7 +174,7 @@ public abstract class Ship {
      * Object that contains the ship's location
      * @return Coord Object with a x and y variable
     */
-    protected final Coord getCoord() {
+    public final Coord getCoord() {
         return this.coord;
     }
     

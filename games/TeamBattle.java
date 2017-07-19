@@ -76,7 +76,7 @@ public class TeamBattle extends Game {
                 int y = point[1];
                 spawnShip(arena, x, y, player);
                 count++;
-                System.out.println(shipClass + " " + team + " " + player.getCoord());
+                //System.out.println(shipClass + " " + team + " " + player.getCoord());
             }
             
         } catch (InstantiationException ie) {

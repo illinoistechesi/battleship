@@ -146,6 +146,7 @@ public abstract class Game {
         String logFile = this.getLogFile();
         this.print("\n");
         this.println(this.getObjective());
+        Helper.writeFileLine(logFile, "Log File: Exceptions");
         Helper.writeFileLine(arenaFile, "Initial Map");
         Helper.writeFileLine(arenaFile, getArenaAsText(arena));
         this.println("\n" + getArenaAsText(arena));

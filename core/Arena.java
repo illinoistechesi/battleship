@@ -28,6 +28,7 @@ public class Arena {
                 if (this.isInRange(source, target)) {
                     target.sustainHit();
                     source.useShot();
+                    actions.add(new Action(target, getTurn()));
                     if (target.isSunk()) {
                         getGrid().set(x, y, null);
                         target.recordSinking(source);

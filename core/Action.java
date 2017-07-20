@@ -33,6 +33,15 @@ public class Action {
         this.attacker = attacker + "";
     }
     
+    public Action(Ship target, int turn) {
+        this.type = "HIT";
+        this.turn = turn;
+        this.id = target + "";
+        this.x = target.getCoord().getX();
+        this.y = target.getCoord().getY();
+        this.health = target.getHealth();
+    }
+    
     public Action(Ship ship, int turn, int x, int y) {
         this.type = "FIRE";
         this.atX = x;

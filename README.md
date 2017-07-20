@@ -61,12 +61,32 @@ Move ship in a given direction if remaining moves available.
 - Direction direction: direction to move in
 - Returns: void
 
+**Example Usage:**
+```
+// Move North 3 spaces, then move East one space
+for (int d = 0; d < 3; d++) {
+    this.move(arena, Direction.NORTH);
+}
+this.move(arena, Direction.EAST);
+```
+
 ### fire(Arena arena, int x, int y)
 Fire at given coordinates if remaining shots available.
 - Arena arena: arena for the game
 - int x: x coordinate to fire at
 - int y: y coordinate to fire at
 - Returns: void
+
+**Example Usage:**
+```
+// Fire at the coordinate (1, 3)
+this.fire(arena, 1, 3);
+// Fire at a ship that is in range of your ship
+Coord location = ship.getCoord();
+int x = location.getX();
+int y = location.getY();
+this.fire(arena, x, y);
+```
 
 ### getShipCoord(Arena arena, Ship ship)
 Get the coordinates of another ship if it is within the range of your ship.
@@ -115,6 +135,34 @@ Coord coord = this.getCoord():
 int x = coord.getX();
 int y = coord.getY();
 System.out.println("My ship is at (" + x + ", " + y + ").");
+```
+
+### isSameTeamAs(Ship other)
+Check if another ship is on the same team as the ship calling this method.
+- Ship other: another ship to compare
+- Returns: boolean
+
+**Example of checking if a ship is on your team:**
+```
+List<Ship> nearby = this.getNearbyShips(arena);
+for (int i = 0; i < nearby.size(); i++) {
+    boolean isOnMyTeam = this.isSameTeamAs(other);
+    if (isOnMyTeam) {
+        System.out.println("This ship is on my team!");
+    } else {
+        System.out.println("This ship is an enemy.");
+    }
+}
+```
+**Example of checking if two different ships are on the same team as each other:**
+```
+Ship first = nearby.get(0);
+Ship second = nearby.get(1);
+if (first.isSameTeamAs(second)) {
+    System.out.println("These two ships are conspiring with each other.");
+} else {
+    System.out.println("These two ships are not friends with each other.");
+}
 ```
 
 ### getRemainingMoves()

@@ -166,6 +166,12 @@ public abstract class Ship {
         return this.sunkAt;
     }
     
+    public final boolean isSameTeamAs(Ship ship) {
+        boolean haveTeams = this.getTeam() != null && ship.getTeam() != null;
+        boolean sameTeam = this.getTeam().equals(ship.getTeam());
+        return haveTeams && sameTeam;
+    }
+    
     /**
      * @return String Determines the name of the ship, Ex. "Boaty McBoatFace"
      */

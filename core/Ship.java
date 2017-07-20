@@ -22,6 +22,8 @@ public abstract class Ship {
     private Ship sunkBy;
     private Coord sunkAt;
     
+    private String team;
+    
     public Ship() {
         
     }
@@ -81,17 +83,25 @@ public abstract class Ship {
         this.sunkAt = this.getCoord();
     }
     
+    final void setTeam(String team) {
+        this.team = team;
+    }
+    
+    public final String getTeam() {
+        return this.team;
+    }
+    
     /**
      * @param String Set the ships name
      */
-    public final void initializeName(String name) {
+    protected final void initializeName(String name) {
         this.name = name;
     }
     
     /**
      * @param String Set the ships command/owner
      */
-    public final void initializeOwner(String owner) {
+    protected final void initializeOwner(String owner) {
         this.owner = owner;
     }
     
@@ -99,7 +109,7 @@ public abstract class Ship {
      * (hull + firepower + speed + range <= LIMIT)
      * @param int initialize Hull of the ship, must be below the LIMIT when summed up
      */
-    public final void initializeHull(int hull) {
+    protected final void initializeHull(int hull) {
         this.hull = withdrawPoints(hull);
         this.health = this.hull;
     }
@@ -108,7 +118,7 @@ public abstract class Ship {
      * (hull + firepower + speed + range <= LIMIT)
      * @param int initialize Firepower of the ship, must be below the LIMIT when summed up
      */
-    public final void initializeFirepower(int firepower) {
+    protected final void initializeFirepower(int firepower) {
         this.firepower = withdrawPoints(firepower);
     }
     
@@ -116,7 +126,7 @@ public abstract class Ship {
      * (hull + firepower + speed + range <= LIMIT)
      * @param int initialize Speed of the ship, must be below the LIMIT when summed up
      */
-    public final void initializeSpeed(int speed) {
+    protected final void initializeSpeed(int speed) {
         this.speed = withdrawPoints(speed);
     }
     
@@ -124,7 +134,7 @@ public abstract class Ship {
      * (hull + firepower + speed + range <= LIMIT)
      * @param int initialize Range of the ship, must be below the LIMIT when summed up
      */
-    public final void initializeRange(int range) {
+    protected final void initializeRange(int range) {
         this.range = withdrawPoints(range);
     }
     
@@ -174,7 +184,7 @@ public abstract class Ship {
      * Object that contains the ship's location
      * @return Coord Object with a x and y variable
     */
-    protected final Coord getCoord() {
+    public final Coord getCoord() {
         return this.coord;
     }
     

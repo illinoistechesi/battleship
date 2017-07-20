@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Map;
+import java.util.HashMap;
 
 public class Arena {
     
@@ -217,7 +219,7 @@ public class Arena {
         return success;
     }
     
-    protected List<Ship> getAllShips() {
+    public List<Ship> getAllShips() {
         List<Ship> res = new ArrayList<Ship>();
         for (Ship ship : getGrid().getAll()) {
             if (ship != null) {
@@ -229,18 +231,23 @@ public class Arena {
         return res;
     }
     
-    protected List<Ship> getAllSpawnedShips() {
+    public List<Ship> getAllSpawnedShips() {
         return this.ships;
     }
     
     protected List<Ship> sortShipsByPriority() {
         List<Ship> ships = this.getAllShips();
+        Map<Ship, Double> priorityMap = new HashMap<Ship, Double>();
+        for (Ship ship: ships) {
+            double baseSpeed = (double) ship.getSpeed();
+            double rand = getRandom().nextDouble();
+            double priority = baseSpeed + rand;
+            priorityMap.put(ship, priority);
+        }
         Collections.sort(ships, new Comparator<Ship>() {
             public int compare(Ship s1, Ship s2) {
-                double p1 = (double) s1.getSpeed();
-                double p2 = (double) s2.getSpeed();
-                p1 += getRandom().nextDouble();
-                p2 += getRandom().nextDouble();
+                double p1 = priorityMap.get(s1);
+                double p2 = priorityMap.get(s2);
                 double diff = p2 - p1;
                 return (int) diff;
             }

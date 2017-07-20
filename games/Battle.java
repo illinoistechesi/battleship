@@ -84,10 +84,15 @@ public class Battle extends Game {
     @Override
     public String getResults() {
         String res = "Battle Results";
-        Ship winner = getAllShips(getArena()).get(0);
+        List<Ship> survivors = getAllShips(getArena());
+        Ship winner = survivors.get(0);
         if (winner != null) {
             res += "\n";
-            res += "Winner: " + winner;
+            if (survivors.size() == 1) {
+                res += "Winner: " + winner;
+            } else {
+                res += "Draw: No Winner";
+            }
         }
         List<Ship> ships = getAllSpawnedShips(getArena());
         for (Ship ship : ships) {

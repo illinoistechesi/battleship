@@ -33,6 +33,10 @@ public abstract class Game {
     /*
      * Functions for building games outside of core package
      */
+     
+    public void setShipTeam(Ship ship, String team) {
+        ship.setTeam(team);
+    }
     
     public Coord getShipCoord(Ship ship) {
         return ship.getCoord();
@@ -146,6 +150,7 @@ public abstract class Game {
         String logFile = this.getLogFile();
         this.print("\n");
         this.println(this.getObjective());
+        Helper.writeFileLine(logFile, "Log File: Exceptions");
         Helper.writeFileLine(arenaFile, "Initial Map");
         Helper.writeFileLine(arenaFile, getArenaAsText(arena));
         this.println("\n" + getArenaAsText(arena));
@@ -195,8 +200,10 @@ public abstract class Game {
         }
         if (hadAnyProblems) {
             this.println("There were exceptions in at least one ship class.");
-            this.println("View " + logFile + " for details.");
+            this.println("- View " + logFile + " for details.");
         }
+        this.println("- View " + arenaFile + " for arena map.");
+        this.println("- View " + debugFile + " for turn log.");
         this.print("\n");
         this.println(this.getResults());
         this.print("\n");

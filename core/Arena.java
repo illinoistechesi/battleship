@@ -20,14 +20,14 @@ public class Arena {
     }
     
     protected void fire(Ship source, int x, int y) {
-        actions.add(new Action(source, getTurn(), x, y));
+        actions.add(new Action(source, getTurn(), x, y)); // Need to change this
         String detail = "- Fired at (" + x + ", " + y + "), ";
         if (source.getRemainingShots() > 0) {
+            source.useShot();
             Ship target = getGrid().get(x, y);
             if (target != null) {
                 if (this.isInRange(source, target)) {
                     target.sustainHit();
-                    source.useShot();
                     actions.add(new Action(target, getTurn()));
                     if (target.isSunk()) {
                         getGrid().set(x, y, null);

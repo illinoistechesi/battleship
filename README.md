@@ -146,6 +146,7 @@ Check if another ship is on the same team as the ship calling this method.
 ```
 List<Ship> nearby = this.getNearbyShips(arena);
 for (int i = 0; i < nearby.size(); i++) {
+    Ship other = nearby.get(i);
     boolean isOnMyTeam = this.isSameTeamAs(other);
     if (isOnMyTeam) {
         System.out.println("This ship is on my team!");

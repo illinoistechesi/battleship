@@ -41,19 +41,6 @@ public class DroneShip extends Ship {
     public Direction getRandomDirection(Arena arena) {
         int index = arena.getRandom().nextInt(this.directions.length);
         Direction dir = this.directions[index];
-        switch (dir) {
-            case WEST:
-                Coord loc = this.getCoord();
-                Ship cell = arena.getShipAt(loc.getX() - 1, loc.getY());
-                if (cell != null) {
-                    System.out.println("Don't move west, a ship is there!");
-                } else {
-                    System.out.println("It is safe to move west.");
-                }
-                break;
-            default:
-                break;
-        }
         return dir;
     }
     

@@ -10,8 +10,9 @@ Table of contents
 
 **[Ship](#ship-class)**<br>
 **[Arena](#arena-class)**<br>
+**[Coordinate](#coord-class)**<br>
 
-# Ship Class
+## Ship Class
 
 ### Methods for setting the properties of your ship
 These methods must be called in the constructor of the ship class
@@ -51,7 +52,7 @@ public class SampleShip extends Ship {
 
 **Example Usage of methods above**
 ``` java
-// examples usage, place in constructor
+// examples usage, place in constructor method
 this.initializeName("Boaty McBoatFace");
 this.initializeOwner("Nick");
 // There is a 10 point limit to distribute among the below methods
@@ -61,26 +62,39 @@ this.initializeSpeed(3);
 this.initializeRange(3);
 ```
 
-## Methods that can only be called by your own ship
+### Methods that can only be called by your own ship
 
 #### doTurn(Arena arena);
-Determines what a ship does on each turn.
-- Arena arena: Arena object that can be used to get more information
+Determines what a ship does on each turn, the code put in here will execute sequentially which means the same instruction is read each turn. But different actions can be taken based on the inputs of the battlefield by using the Arena object, check out the [Arena Class](#arena-class) and search for if-statements.
+
+- Arena arena: Arena object used to get battlefield information
 - Returns: void
+
+``` java
+@override
+public void doTurn(Arena arena) {
+    // instruction for ship behavior should be placed here
+    // where it will be read/executed sequentially each turn
+}
+```
 
 #### move(Arena arena, Direction direction)
-Move ship in a given direction if remaining moves available.
+Move ship in a given direction if remaining moves available and the spot is not taken by another ship or considered outside of the game boundary.
 - Arena arena: arena for the game, that can be used to get more information
-- Direction direction: direction to move in
+- Direction direction: direction to move in 
 - Returns: void
 
-**Example Usage:**
-```
+``` java
 // Move North 3 spaces, then move East one space
 for (int d = 0; d < 3; d++) {
     this.move(arena, Direction.NORTH);
 }
 this.move(arena, Direction.EAST);
+// check for remaining moves, if there are more, move south one space
+if (this.getRemainingMoves() > 0) {
+    this.move(arena, Direction.SOUTH);
+}
+
 ```
 
 #### fire(Arena arena, int x, int y)
@@ -90,8 +104,7 @@ Fire at given coordinates if remaining shots available.
 - int y: y coordinate to fire at
 - Returns: void
 
-**Example Usage:**
-```
+``` java
 // Fire at the coordinate (1, 3)
 this.fire(arena, 1, 3);
 // Fire at a ship that is in range of your ship
@@ -104,11 +117,14 @@ this.fire(arena, x, y);
 #### getShipCoord(Arena arena, Ship ship)
 Get the coordinates of another ship if it is within the range of your ship.
 - **Note:** You do not have to use this method because you can now get the coordinates of any ship, even if it is outside the range of your ship.
+- Arena arena: takes an arena object
 - Ship ship: another ship
 - Returns: Coord
 
+
 #### getNearbyShips(Arena arena)
 Returns a list of ships (exclusing your own) that are within the range of your ship.
+- Arena arena: takes an arena object
 - Returns: List<Ship>
 
 > Q: "What do the angle brackets mean?"
@@ -116,26 +132,26 @@ Returns a list of ships (exclusing your own) that are within the range of your s
 > A: These are called "generics." You can use Lists to store any kind of object. So the way to read `List<Ship>` out loud is: "a List of Ship objects."
 
 **Example Usage:*
-```
+``` java
 // Loop over all nearby ships
 List<Ship> nearby = this.getNearbyShips(arena);
 for (Ship ship : nearby) {
     System.out.println("One nearby ship has " + ship.getHealth() + " HP left.");
 }
 ```
-```
+``` java
 // Get the first ship in the list, if there are that many
 Ship first = nearby.get(0);
 // Get the 4th ship in the list, if there are that many
 Ship fourth = nearby.get(3);
 ```
-```
+``` java
 // Get the number of items in a list
 int count = nearby.size();
 System.out.println("There are " + count + " ships near me.");
 ```
 
-## Methods that can be used on any ship
+### Methods that can be used on any ship
 
 #### getCoord()
 Get the coordinate of your ship, check out the Coord class for more information.
@@ -143,7 +159,7 @@ Get the coordinate of your ship, check out the Coord class for more information.
 - Returns: Coord
 
 **Example of getting x and y from Coord object**
-```
+``` java
 Coord coord = this.getCoord():
 int x = coord.getX();
 int y = coord.getY();
@@ -156,7 +172,7 @@ Check if another ship is on the same team as the ship calling this method.
 - Returns: boolean
 
 **Example of checking if a ship is on your team:**
-```
+``` java
 List<Ship> nearby = this.getNearbyShips(arena);
 for (int i = 0; i < nearby.size(); i++) {
     Ship other = nearby.get(i);
@@ -169,7 +185,7 @@ for (int i = 0; i < nearby.size(); i++) {
 }
 ```
 **Example of checking if two different ships are on the same team as each other:**
-```
+``` java
 Ship first = nearby.get(0);
 Ship second = nearby.get(1);
 if (first.isSameTeamAs(second)) {
@@ -220,7 +236,7 @@ Get the range of a ship.
 - Returns: int
  
 **Example Usage:**
-```
+``` java
 List<Ship> list = this.getNearbyShips(arena);
 Ship enemy = list.get(0);
 System.out.println("Enemy Ship: " + enemy.getName());
@@ -262,6 +278,23 @@ Get horizontal size of arena.
 Get vertical size of arena.
 - Returns: int
 
+**Example of map size usage**
+``` java
+Coord myShipLocation = this.getCoord();
+// if current x location plus one is equal to the size of the map
+// then we have reached the EAST edge of the map
+if (myShipLocation.getX() + 1 == arena.getXSize()) {
+    this.move(arena, Direction.WEST);
+}
+// similar example but uses y location and a variable to store the values
+int shipYLocation = myShipLocation.getY();
+// if current y location minus one is equal to zero
+// then we have reached the NORTH edge of the map
+if (shipYLocation - 1 == 0) {
+    this.move(arena, Direction.SOUTH);
+}
+```
+
 #### getTurn()
 Get the number of this turn.
 - Returns: int
@@ -275,25 +308,35 @@ Get the random object for the arena. Do not create your own random objects, use 
 - Returns: Random
 
 **Examples of common random methods:**
-```
+``` java
 // Get a random integer between 0 (inclusive) and 4 (exclusive)
 int i = arena.getRandom().nextInt(4);
 ```
-```
+``` java
 // Get a random double between 0.0 and 1
 double d = arena.getRandom().nextDouble();
 ```
-```
+``` java
 // Get a random object from a list
 List<Ship> list = this.getNearbyShips(arena);
 int index = arena.getRandom().nextInt(list.size());
 Ship r = list.get(index);
 ```
 
+## Coord Class
+
+#### public int getX() 
+gets the x location of a coordinate object
+- returns: int 
+    
+#### public int getY() 
+gets the y location of a coordinate object
+- returns: int
+
 
 
 **Full Example of a simple ship**
-```
+``` java
 // doTurn Example, place in your ship class
 @Override
 public void doTurn(Arena arena) {
@@ -321,7 +364,7 @@ public void doTurn(Arena arena) {
         Direction[] possibleMovement = {Direction.NORTH, Direction.SOUTH, Direction.WEST, Direction.EAST};
         
         // get a random number and store it in a variable
-        Direction randomNumber = arena.getRandom().nextInt(4)
+        int randomNumber = arena.getRandom().nextInt(4)
         
         // get a random movement by using the random number to access one possibleMovement 
         this.move(arena, possibleMovement[randomNumber]);

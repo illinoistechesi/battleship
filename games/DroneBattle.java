@@ -6,11 +6,13 @@ import java.util.*;
 public class DroneBattle extends Game {
     
     private List<Spawn> combatants;
+    private Class<? extends Ship> droneClass;
     private int starterSeed = 0;
     
-    public DroneBattle(List<Spawn> combatants, int seed) {
+    public DroneBattle(List<Spawn> combatants, Class<? extends Ship> droneClass, int seed) {
         this.starterSeed = seed;
         this.combatants = combatants;
+        this.droneClass = droneClass;
         Arena arena = initializeArena();
         setArena(arena);
         this.setSeed(seed);
@@ -65,7 +67,7 @@ public class DroneBattle extends Game {
             };
             
             for (int d = 0; d < drones.length; d++) {
-                Ship drone = new DroneShip();
+                Ship drone = this.droneClass.newInstance();
                 setShipTeam(drone, droneTeam);
                 int[] droneSpawn = drones[d];
                 int x = droneSpawn[0];

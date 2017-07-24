@@ -19,7 +19,7 @@ public class PatrolShip extends Ship {
         List<Ship> nearby = this.getNearbyShips(arena);
         if (nearby.size() > 0) {
             Ship target = nearby.get(0);
-            Coord coord = this.getShipCoord(arena, target);
+            Coord coord = target.getCoord();
             this.fire(arena, coord.getX(), coord.getY());
         }
     }

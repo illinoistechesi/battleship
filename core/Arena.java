@@ -151,6 +151,10 @@ public class Arena {
         return this.getGrid().getYSize();
     }
     
+    public Ship getShipAt(int x, int y) {
+        return this.getGrid().get(x, y);
+    }
+    
     private String DEBUG_FILE = null;
     private boolean debugMode = false;
     

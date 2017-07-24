@@ -4,34 +4,47 @@
 The entire setup guide is [here](https://illinoistechesi/github.io/battleshipsetup).
 
 ## API
-These are the functions you can use when developing your own ships.
+These are the functions you can use when developing your own ships.<br>
+
+Table of contents
+
+**[Ship](#ship-class)**<br>
+**[Arena](#arena-class)**<br>
 
 # Ship Class
 
-## Methods for setting the properties of your ship
+### Methods for setting the properties of your ship
+These methods must be called in the constructor of the ship class
+``` java
+public class SampleShip extends Ship {
+    public SampleShip() { // <- called once when a new object is instantiated(created)
+        // Constructor method 
+    }
+}
+```
 
-### initializeName(String name)
+#### initializeName(String name)
 
 - String name: String name of your ship
 - Returns: void
 
-### initializeOwner(String owner)
+#### initializeOwner(String owner)
 - String owner: String name of the person who created the ship
 - Returns: void
 
-### initializeHull(int hull)
+#### initializeHull(int hull)
 - int hull: The amount of points dedicated to hull points, the number of shots the ships can sustain
 - Returns: void
 
-### initializeFirepower(int firepower)
+#### initializeFirepower(int firepower)
 - int firepower: The amount of points dedicated to firepower, the number of shots the ship can make in one turn
 - Returns: void
 
-### initializeSpeed(int speed)
+#### initializeSpeed(int speed)
 - int speed: The amount of points dedicated to speed, the number of (NORTH, SOUTH, WEST, EAST) movement a ship can make in one turn
 - Returns: void
 
-### initializeRange(int range)
+#### initializeRange(int range)
 - int range: The amount of points dedicated to range, the firing and sight range of the ship (in a squared radius)
 - Returns: void
  
@@ -50,12 +63,12 @@ this.initializeRange(3);
 
 ## Methods that can only be called by your own ship
 
-### doTurn(Arena arena);
+#### doTurn(Arena arena);
 Determines what a ship does on each turn.
 - Arena arena: Arena object that can be used to get more information
 - Returns: void
 
-### move(Arena arena, Direction direction)
+#### move(Arena arena, Direction direction)
 Move ship in a given direction if remaining moves available.
 - Arena arena: arena for the game, that can be used to get more information
 - Direction direction: direction to move in
@@ -70,7 +83,7 @@ for (int d = 0; d < 3; d++) {
 this.move(arena, Direction.EAST);
 ```
 
-### fire(Arena arena, int x, int y)
+#### fire(Arena arena, int x, int y)
 Fire at given coordinates if remaining shots available.
 - Arena arena: arena for the game
 - int x: x coordinate to fire at
@@ -88,13 +101,13 @@ int y = location.getY();
 this.fire(arena, x, y);
 ```
 
-### getShipCoord(Arena arena, Ship ship)
+#### getShipCoord(Arena arena, Ship ship)
 Get the coordinates of another ship if it is within the range of your ship.
 - **Note:** You do not have to use this method because you can now get the coordinates of any ship, even if it is outside the range of your ship.
 - Ship ship: another ship
 - Returns: Coord
 
-### getNearbyShips(Arena arena)
+#### getNearbyShips(Arena arena)
 Returns a list of ships (exclusing your own) that are within the range of your ship.
 - Returns: List<Ship>
 
@@ -124,7 +137,7 @@ System.out.println("There are " + count + " ships near me.");
 
 ## Methods that can be used on any ship
 
-### getCoord()
+#### getCoord()
 Get the coordinate of your ship, check out the Coord class for more information.
 - **Note:** You can now get the coordinates of any ship, even if it is outside the range of your ship.
 - Returns: Coord
@@ -137,7 +150,7 @@ int y = coord.getY();
 System.out.println("My ship is at (" + x + ", " + y + ").");
 ```
 
-### isSameTeamAs(Ship other)
+#### isSameTeamAs(Ship other)
 Check if another ship is on the same team as the ship calling this method.
 - Ship other: another ship to compare
 - Returns: boolean
@@ -166,43 +179,43 @@ if (first.isSameTeamAs(second)) {
 }
 ```
 
-### getRemainingMoves()
+#### getRemainingMoves()
 Get the number of moves a ship has left on this turn.
 - Returns: int
 
-### getRemainingShots()
+#### getRemainingShots()
 Get the number of shots a ship has left on this turn.
 - Returns: int
 
-### isSunk()
+#### isSunk()
 Get whether or not the ship has sunk
 - Returns: boolean
 
-### getName()
+#### getName()
 Get the name of a ship.
 - Returns: String
 
-### getOwner()
+#### getOwner()
 Get the name of the owner of a ship.
 - Returns: String
 
-### getHealth()
+#### getHealth()
 Get the number of hits a ship has remaining before it sinks.
 - Returns: int
 
-### getHull()
+#### getHull()
 Get the hull strength of a ship.
 - Returns: int
 
-### getFirepower()
+#### getFirepower()
 Get the firepower of a ship.
 - Returns: int
 
-### getSpeed()
+#### getSpeed()
 Get the speed of a ship.
 - Returns: int
 
-### getRange()
+#### getRange()
 Get the range of a ship.
 - Returns: int
  
@@ -227,37 +240,37 @@ System.out.println("Enemy has taken " + hitsTaken + " hits.");
 
 ## Arena Class
 
-### getAllShips()
+#### getAllShips()
 Returns a list of ships in the arena that have not yet sunk.
 - Returns: List<Ship>
 
-### getAllSpawnedShips()
+#### getAllSpawnedShips()
 Returns a list of ships, whether or not they have sunk.
 - Returns: List<Ship>
 
-### isInRange(Ship a, Ship b)
+#### isInRange(Ship a, Ship b)
 Determines if ship b is within the range of ship a.
 - Ship a: ship to check range from
 - Ship b: ship to check for
 - Returns: boolean
 
-### getXSize()
+#### getXSize()
 Get horizontal size of arena.
 - Returns: int
 
-### getYSize()
+#### getYSize()
 Get vertical size of arena.
 - Returns: int
 
-### getTurn()
+#### getTurn()
 Get the number of this turn.
 - Returns: int
 
-### countLiveShips()
+#### countLiveShips()
 Get the number of ships that are currently alive in the arena.
 - Returns: int
 
-### getRandom()
+#### getRandom()
 Get the random object for the arena. Do not create your own random objects, use this object for any randomness.
 - Returns: Random
 

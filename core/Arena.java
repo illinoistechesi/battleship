@@ -20,13 +20,14 @@ public class Arena {
     }
     
     protected void fire(Ship source, int x, int y) {
-        actions.add(new Action(source, getTurn(), x, y)); // Need to change this
+        // Old save location
         String detail = "- Fired at (" + x + ", " + y + "), ";
         if (source.getRemainingShots() > 0) {
             source.useShot();
             Ship target = getGrid().get(x, y);
             if (target != null) {
                 if (this.isInRange(source, target)) {
+                    actions.add(new Action(source, getTurn(), x, y)); // Moved save here
                     target.sustainHit();
                     actions.add(new Action(target, getTurn()));
                     if (target.isSunk()) {
@@ -42,6 +43,7 @@ public class Arena {
                     detail += "ship was out of range.";
                 }
             } else {
+                actions.add(new Action(source, getTurn(), x, y)); // Also show these shots
                 detail += "could not find a target.";
             }
         } else {

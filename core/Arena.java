@@ -256,7 +256,13 @@ public class Arena {
                 double p1 = priorityMap.get(s1);
                 double p2 = priorityMap.get(s2);
                 double diff = p2 - p1;
-                return (int) diff;
+                int comparison = 0;
+                if (diff > 0) {
+                    comparison = 1;
+                } else if (diff < 0) {
+                    comparison = -1;
+                }
+                return comparison;
             }
         });
         return ships;

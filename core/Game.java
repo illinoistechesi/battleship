@@ -3,6 +3,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.io.StringWriter;
 import java.io.PrintWriter;
+import java.io.PrintStream;
 
 public abstract class Game {
     
@@ -75,6 +76,7 @@ public abstract class Game {
     }
     
     private boolean verbose = true;
+    private boolean canPrint = true;
     private int maxTurns = 50;
     private boolean debugMode = true;
     private String arenaFile = "./files/game-arena.txt";
@@ -87,6 +89,14 @@ public abstract class Game {
     
     public void setVerbose(boolean verbose) {
         this.verbose = verbose;
+    }
+    
+    public boolean canPrint() {
+        return this.canPrint;
+    }
+    
+    public void setCanPrint(boolean canPrint) {
+        this.canPrint = canPrint;
     }
     
     public int getMaxTurns() {
@@ -167,6 +177,10 @@ public abstract class Game {
                 if (!ship.isSunk()) {
                     Helper.writeFileLine(debugFile, ship + "");
                     this.initializeTurn(ship);
+                    PrintStream oldOut = System.out;
+                    if (!this.canPrint()) {
+                        System.setOut(null);   
+                    }
                     try {
                         ship.doTurn(arena);
                     } catch (Exception e) {
@@ -180,6 +194,7 @@ public abstract class Game {
                         hadAnyProblems = true;
                         // Squash problems with the doTurn function
                     }
+                    System.setOut(oldOut);
                 }
             }
             Helper.writeFileLine(arenaFile, "After T = " + t);

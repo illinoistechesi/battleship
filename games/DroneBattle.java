@@ -92,7 +92,7 @@ public class DroneBattle extends Game {
         for (Ship ship : getArena().getAllSpawnedShips()) {
             boolean stillSailing = !ship.isSunk();
             if (stillSailing) {
-                if (ship instanceof DroneShip) {
+                if (this.droneClass.isInstance(ship)) {
                     droneCount++;
                 } else {
                     otherCount++;

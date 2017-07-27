@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.ArrayList;
 import battleship.ships.QueenShip;
+import java.io.PrintStream;
 
 /*
  * Hive Ship
@@ -58,7 +59,19 @@ public class HiveShip extends Ship {
     
     public QueenShip getQueen(Arena arena) throws LostWillToFightException {
         if (this.trueQueen == null) {
-            for (Ship ship : arena.getAllShips()) {
+            Ship self = this;
+            List<Ship> allShips = arena.getAllShips();
+            Collections.sort(allShips, new Comparator<Ship>() {
+                public int compare(Ship s1, Ship s2) {
+                    int comparison = 0;
+                    int d1 = QueenShip.getArenaDistanceBetween(self, s1);
+                    int d2 = QueenShip.getArenaDistanceBetween(self, s2);
+                    int diff = d1 - d2;
+                    comparison = diff;
+                    return comparison;
+                } 
+            });
+            for (Ship ship : allShips) {
                 if (ship instanceof QueenShip) {
                     QueenShip queen = (QueenShip) ship;
                     this.trueQueen = queen;

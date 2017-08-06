@@ -1,7 +1,7 @@
 # Battleship
 
 ## Getting Started
-The entire setup guide is [here](https://illinoistechesi/github.io/battleshipsetup).
+The entire setup guide is [here](https://illinoistechesi.github.io/battleshipsetup).
 
 ## API
 These are the functions you can use when developing your own ships.<br>

@@ -75,7 +75,7 @@ public abstract class Ship {
     private final int withdrawPoints(int amount) {
         int pointsUsed = getHull() + getFirepower() + getSpeed() + getRange();
         int pointsRemaining = LIMIT - pointsUsed;
-        return Math.min(pointsRemaining, amount);
+        return Math.max(Math.min(pointsRemaining, amount), 0);
     }
     
     final void recordSinking(Ship attacker) {

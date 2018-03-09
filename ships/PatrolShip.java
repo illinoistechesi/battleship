@@ -14,7 +14,7 @@ public class PatrolShip extends Ship {
     }
     
     @Override
-    public void doTurn(Arena arena) {
+    protected void doTurn(Arena arena) {
         this.move(arena, Direction.WEST);
         List<Ship> nearby = this.getNearbyShips(arena);
         if (nearby.size() > 0) {

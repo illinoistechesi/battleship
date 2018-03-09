@@ -23,7 +23,7 @@ public class DummyShip extends Ship {
      * @return void
      */
     @Override
-    public void doTurn(Arena arena) {
+    protected void doTurn(Arena arena) {
         // Fill in your strategy here
     }
     

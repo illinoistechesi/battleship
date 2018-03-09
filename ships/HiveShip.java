@@ -30,7 +30,7 @@ public class HiveShip extends Ship {
      * @return void
      */
     @Override
-    public void doTurn(Arena arena) {
+    protected void doTurn(Arena arena) {
         try {
             QueenShip queen = this.getQueen(arena);
             Ship target = queen.getNextTarget(arena, this);

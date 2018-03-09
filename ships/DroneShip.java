@@ -15,7 +15,7 @@ public class DroneShip extends Ship {
     }
     
     @Override
-    public void doTurn(Arena arena) {
+    protected void doTurn(Arena arena) {
         List<Ship> enemies = this.getNearbyEnemies(arena);
         for (int m = 0; m < this.getSpeed(); m++) {
             if (enemies.size() > 0) {

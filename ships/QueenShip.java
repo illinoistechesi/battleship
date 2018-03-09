@@ -28,7 +28,7 @@ public class QueenShip extends Ship {
      * @return void
      */
     @Override
-    public void doTurn(Arena arena) {
+    protected void doTurn(Arena arena) {
         if (arena.getTurn() < 2 && this.inSuicideProtocol) {
             for (int s = 0; s < this.getHealth(); s++) {
                 Coord self = this.getCoord();

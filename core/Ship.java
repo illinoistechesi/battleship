@@ -33,7 +33,7 @@ public abstract class Ship {
 	/**
 	 * Classes extending this will need to implement this method to program their ship behavior
 	 */
-	public abstract void doTurn(Arena arena);
+	protected abstract void doTurn(Arena arena);
 	
 	final void initializeTurn() {
 		this.moves = this.getSpeed();

@@ -226,6 +226,10 @@ public class Arena {
 		}
 		return success;
 	}
+
+	protected void setShipColor(Ship ship, String color) {
+		ship.setColor(color);
+	}
 	
 	public List<Ship> getAllShips() {
 		List<Ship> res = new ArrayList<Ship>();

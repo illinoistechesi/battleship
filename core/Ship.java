@@ -23,6 +23,7 @@ public abstract class Ship {
 	private Coord sunkAt;
 	
 	private String team;
+	private String color;
 
 	private Arena arena;
 	
@@ -78,6 +79,10 @@ public abstract class Ship {
 		int pointsUsed = getHull() + getFirepower() + getSpeed() + getRange();
 		int pointsRemaining = LIMIT - pointsUsed;
 		return Math.max(Math.min(pointsRemaining, amount), 0);
+	}
+
+	final void setColor(String color) {
+		this.color = color;
 	}
 
 	final void setArena(Arena arena) {

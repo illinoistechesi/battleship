@@ -14,43 +14,50 @@ public class Arena {
 	private Grid<Ship> grid;
 	private Random random = new Random();
 	private List<Action> actions = new ArrayList<Action>();
+
+	private Ship current;
 	
 	public Arena(int xSize, int ySize) {
 		this.grid = new Grid<Ship>(xSize, ySize);
 	}
+
+	protected void setCurrentShip(Ship ship) {
+		this.current = ship;
+	}
 	
 	protected void fire(Ship source, int x, int y) {
-		// Old save location
-		String detail = "- Fired at (" + x + ", " + y + "), ";
-		if (source.getRemainingShots() > 0) {
-			source.useShot();
-			Ship target = getGrid().get(x, y);
-			if (target != null) {
-				if (this.isInRange(source, target)) {
-					actions.add(new Action(source, getTurn(), x, y)); // Moved save here
-					target.sustainHit();
-					actions.add(new Action(target, getTurn()));
-					if (target.isSunk()) {
-						getGrid().set(x, y, null);
-						target.recordSinking(source);
-						actions.add(new Action(target, getTurn(), source));
-						detail += "sunk ship!";
+		if (source == this.current) {
+			String detail = "- Fired at (" + x + ", " + y + "), ";
+			if (source.getRemainingShots() > 0) {
+				source.useShot();
+				Ship target = getGrid().get(x, y);
+				if (target != null) {
+					if (this.isInRange(source, target)) {
+						actions.add(new Action(source, getTurn(), x, y)); // Moved save here
+						target.sustainHit();
+						actions.add(new Action(target, getTurn()));
+						if (target.isSunk()) {
+							getGrid().set(x, y, null);
+							target.recordSinking(source);
+							actions.add(new Action(target, getTurn(), source));
+							detail += "sunk ship!";
+						} else {
+							detail += "hit ship, hull strength remaining: ";
+							detail += target.getHealth();
+						}
 					} else {
-						detail += "hit ship, hull strength remaining: ";
-						detail += target.getHealth();
+						detail += "ship was out of range.";
 					}
 				} else {
-					detail += "ship was out of range.";
+					actions.add(new Action(source, getTurn(), x, y)); // Also show these shots
+					detail += "could not find a target.";
 				}
 			} else {
-				actions.add(new Action(source, getTurn(), x, y)); // Also show these shots
-				detail += "could not find a target.";
+				detail += "no shots remaining on this turn.";
 			}
-		} else {
-			detail += "no shots remaining on this turn.";
-		}
-		if (inDebugMode()) {
-			Helper.writeFileLine(DEBUG_FILE, detail);
+			if (inDebugMode()) {
+				Helper.writeFileLine(DEBUG_FILE, detail);
+			}
 		}
 	}
 	
@@ -60,46 +67,48 @@ public class Arena {
 	 * @param Direction 
 	 */
 	protected void move(Ship source, Direction dir) {
-		String detail = "- Moved " + dir + ", ";
-		if (source.getRemainingMoves() > 0) {
-			int x = source.getCoord().getX();
-			int y = source.getCoord().getY();
-			switch (dir) {
-				case NORTH:
-					y--;
-					break;
-				case SOUTH:
-					y++;
-					break;
-				case WEST:
-					x--;
-					break;
-				case EAST:
-					x++;
-					break;
-			}
-			if (getGrid().get(x, y) == null) {
-				boolean success = getGrid().set(x, y, source);
-				if (success) {
-					int oldX = source.getCoord().getX();
-					int oldY = source.getCoord().getY();
-					getGrid().set(oldX, oldY, null);
-					source.setCoord(x, y);
-					source.useMove();
-					detail += "now at (" + x + ", " + y+ ").";
+		if (source == this.current) {
+			String detail = "- Moved " + dir + ", ";
+			if (source.getRemainingMoves() > 0) {
+				int x = source.getCoord().getX();
+				int y = source.getCoord().getY();
+				switch (dir) {
+					case NORTH:
+						y--;
+						break;
+					case SOUTH:
+						y++;
+						break;
+					case WEST:
+						x--;
+						break;
+					case EAST:
+						x++;
+						break;
+				}
+				if (getGrid().get(x, y) == null) {
+					boolean success = getGrid().set(x, y, source);
+					if (success) {
+						int oldX = source.getCoord().getX();
+						int oldY = source.getCoord().getY();
+						getGrid().set(oldX, oldY, null);
+						source.setCoord(x, y);
+						source.useMove();
+						detail += "now at (" + x + ", " + y+ ").";
+					} else {
+						detail += "reached edge of the map.";
+					}
 				} else {
-					detail += "reached edge of the map.";
+					detail += "but space was occupied by another object.";
 				}
 			} else {
-				detail += "but space was occupied by another object.";
+				detail += "no moves remaining on this turn.";
 			}
-		} else {
-			detail += "no moves remaining on this turn.";
+			if (inDebugMode()) {
+				Helper.writeFileLine(DEBUG_FILE, detail);
+			}
+			actions.add(new Action(source, getTurn(), dir));
 		}
-		if (inDebugMode()) {
-			Helper.writeFileLine(DEBUG_FILE, detail);
-		}
-		actions.add(new Action(source, getTurn(), dir));
 	}
 	
 	/**
@@ -225,6 +234,10 @@ public class Arena {
 			}
 		}
 		return success;
+	}
+
+	protected void setShipColor(Ship ship, String color) {
+		ship.setColor(color);
 	}
 	
 	public List<Ship> getAllShips() {

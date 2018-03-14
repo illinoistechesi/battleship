@@ -85,6 +85,10 @@ public abstract class Ship {
 		this.color = color;
 	}
 
+	public final String getColor() {
+		return this.color;
+	}
+
 	final void setArena(Arena arena) {
 		this.arena = arena;
 	}

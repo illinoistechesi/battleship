@@ -182,6 +182,7 @@ public abstract class Game {
                         System.setOut(null);   
                     }
                     try {
+                        arena.setCurrentShip(ship);
                         ship.doTurn(arena);
                     } catch (Exception e) {
                         StringWriter sw = new StringWriter();

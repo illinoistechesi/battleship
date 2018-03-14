@@ -38,6 +38,10 @@ public abstract class Game {
     public void setShipTeam(Ship ship, String team) {
         ship.setTeam(team);
     }
+
+    public void setShipColor(Ship ship, String color) {
+        ship.setColor(color);
+    }
     
     public Coord getShipCoord(Ship ship) {
         return ship.getCoord();

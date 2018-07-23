@@ -41,7 +41,7 @@ public class Main extends Game {
 	
 	@Override
 	public Arena initializeArena() {
-		Arena arena = new Arena(10, 10);
+		Arena arena = new Arena(15, 10);
 
 		// add ship and team here
 		// Ship ship1 = new [YourShipName]Ship.java
@@ -51,8 +51,8 @@ public class Main extends Game {
 
 		Ship scarlet = new SimpleShip();
 		Ship crimson = new SimpleShip();
-		Ship azure = new AzureShip();
-		Ship teal = new TealShip();
+		Ship azure = new SimpleShip();
+		Ship teal = new SimpleShip();
 
 		setShipTeam(scarlet, "Red Team");
 		setShipColor(scarlet, "#ff291e");

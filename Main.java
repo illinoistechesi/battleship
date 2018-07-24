@@ -51,28 +51,55 @@ public class Main extends Game {
 
 		Ship scarlet = new SimpleShip();
 		Ship crimson = new SimpleShip();
-		Ship azure = new SimpleShip();
-		Ship teal = new SimpleShip();
+		Ship garnet = new SimpleShip();
+		Ship maroon = new SimpleShip();
 
+		Ship azure = new SimpleShip();
+		Ship lapis = new SimpleShip();
+		Ship teal = new SimpleShip();
+		Ship navy = new SimpleShip();
+
+		/**** 		Red Team 		 ****/
 		setShipTeam(scarlet, "Red Team");
-		setShipColor(scarlet, "#ff291e");
-		spawnShip(arena, 0, 5, scarlet);
+		setShipColor(scarlet, "#FF2400");
+		spawnShip(arena, 0, 3, scarlet);
 		redTeam.add(scarlet);
 		
 		setShipTeam(crimson, "Red Team");
-		setShipColor(crimson, "#dc143c");
-		spawnShip(arena, 0, 6, crimson);
+		setShipColor(crimson, "#DC143C");
+		spawnShip(arena, 0, 4, crimson);
 		redTeam.add(crimson);
 
+		setShipTeam(garnet, "Red Team");
+		setShipColor(garnet, "#4c0405");
+		spawnShip(arena, 0, 5, garnet);
+		redTeam.add(garnet);
+
+		setShipTeam(maroon, "Red Team");
+		setShipColor(maroon, "#800000");
+		spawnShip(arena, 0, 6, maroon);
+		redTeam.add(maroon);
+
+		/**** 		Blue Team 		****/
 		setShipTeam(azure, "Blue Team");
-		setShipColor(azure, "#1c89ff");
-		spawnShip(arena, 9, 5, azure);
+		setShipColor(azure, "#100995");
+		spawnShip(arena, 14, 3, azure);
 		blueTeam.add(azure);
 
+		setShipTeam(lapis, "Blue Team");
+		setShipColor(lapis, "#007FFF");
+		spawnShip(arena, 14, 4, lapis);
+		blueTeam.add(lapis);
+
 		setShipTeam(teal, "Blue Team");
-		setShipColor(teal, "#149eba");
-		spawnShip(arena, 9, 6, teal);
+		setShipColor(teal, "#008080");
+		spawnShip(arena, 14, 5, teal);
 		blueTeam.add(teal);
+
+		setShipTeam(navy, "Blue Team");
+		setShipColor(navy, "#000080");
+		spawnShip(arena, 14, 6, navy);
+		blueTeam.add(navy);
 
 		return arena;
 	}

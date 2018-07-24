@@ -360,7 +360,7 @@ gets the y location of a coordinate object
 ``` java
 // doTurn Example, place in your ship class
 @Override
-public void doTurn(Arena arena) {
+protected void doTurn(Arena arena) {
     // your implementation of a ship
 
     // gets the current location of the ship

@@ -116,7 +116,7 @@ protected void doTurn(Arena arena) {
     // access the list if there are any nearby ships
     if (targets.size() > 0) {
         // get the first ship in the targets list
-        Ship ship = target.get(0);
+        Ship ship = targets.get(0);
         Coord location = ship.getCoord();
         int x = location.getX();
         int y = location.getY();

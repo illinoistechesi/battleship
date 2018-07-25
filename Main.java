@@ -41,7 +41,7 @@ public class Main extends Game {
 	
 	@Override
 	public Arena initializeArena() {
-		Arena arena = new Arena(15, 10);
+		Arena arena = new Arena(15, 8);
 
 		// add ship and team here
 		// Ship ship1 = new [YourShipName]Ship.java
@@ -54,51 +54,51 @@ public class Main extends Game {
 		Ship garnet = new SimpleShip();
 		Ship maroon = new SimpleShip();
 
-		Ship azure = new SimpleShip();
-		Ship lapis = new SimpleShip();
-		Ship teal = new SimpleShip();
-		Ship navy = new SimpleShip();
+		Ship azure = new GunDroneShip();
+		Ship lapis = new HullDroneShip();
+		Ship teal = new HullDroneShip();
+		Ship navy = new GunDroneShip();
 
 		/**** 		Red Team 		 ****/
 		setShipTeam(scarlet, "Red Team");
 		setShipColor(scarlet, "#FF2400");
-		spawnShip(arena, 0, 3, scarlet);
+		spawnShip(arena, 0, 2, scarlet);
 		redTeam.add(scarlet);
 		
 		setShipTeam(crimson, "Red Team");
 		setShipColor(crimson, "#DC143C");
-		spawnShip(arena, 0, 4, crimson);
+		spawnShip(arena, 0, 3, crimson);
 		redTeam.add(crimson);
 
 		setShipTeam(garnet, "Red Team");
 		setShipColor(garnet, "#4c0405");
-		spawnShip(arena, 0, 5, garnet);
+		spawnShip(arena, 0, 4, garnet);
 		redTeam.add(garnet);
 
 		setShipTeam(maroon, "Red Team");
 		setShipColor(maroon, "#800000");
-		spawnShip(arena, 0, 6, maroon);
+		spawnShip(arena, 0, 5, maroon);
 		redTeam.add(maroon);
 
 		/**** 		Blue Team 		****/
 		setShipTeam(azure, "Blue Team");
 		setShipColor(azure, "#100995");
-		spawnShip(arena, 14, 3, azure);
+		spawnShip(arena, 14, 2, azure);
 		blueTeam.add(azure);
 
 		setShipTeam(lapis, "Blue Team");
 		setShipColor(lapis, "#007FFF");
-		spawnShip(arena, 14, 4, lapis);
+		spawnShip(arena, 14, 3, lapis);
 		blueTeam.add(lapis);
 
 		setShipTeam(teal, "Blue Team");
 		setShipColor(teal, "#008080");
-		spawnShip(arena, 14, 5, teal);
+		spawnShip(arena, 14, 4, teal);
 		blueTeam.add(teal);
 
 		setShipTeam(navy, "Blue Team");
 		setShipColor(navy, "#000080");
-		spawnShip(arena, 14, 6, navy);
+		spawnShip(arena, 14, 5, navy);
 		blueTeam.add(navy);
 
 		return arena;

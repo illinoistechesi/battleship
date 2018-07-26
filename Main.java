@@ -1,5 +1,6 @@
 import esi18.*;
 import battleship.core.*;
+import battleship.ships.*;
 import java.util.*;
 
 /*
